@@ -1,11 +1,11 @@
 package models;
 
-public class Result {
+public class PlayerAnswer {
 
     private Player player;
     private Answer answer;
 
-    public Result(Player player, Answer answer) {
+    public PlayerAnswer(Player player, Answer answer) {
         this.player = player;
         this.answer = answer;
     }
