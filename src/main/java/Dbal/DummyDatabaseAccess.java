@@ -19,13 +19,13 @@ public class DummyDatabaseAccess {
                 con = DriverManager.getConnection(connectionUrl);
 
                 // Create and execute an SQL statement that returns some data.
-                String SQL = "SELECT * FROM Question";
+                String SQL = "SELECT Question.ID, Question.Question, Answer.Answer, Answer.Correct FROM Question INNER JOIN Answer ON Question.ID=Answer.QuestionID; ";
                 stmt = con.createStatement();
                 rs = stmt.executeQuery(SQL);
 
                 // Iterate through the data in the result set and display it.
                 while (rs.next()) {
-                    System.out.println(rs.getString(1) + " " + rs.getString(2));
+                    System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4));
                 }
             }
 

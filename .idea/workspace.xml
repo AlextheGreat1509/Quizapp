@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38ddf5bc-bfd6-4903-9d60-2e525749f12e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_microsoft_sqlserver_mssql_jdbc_6_4_0_jre8.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Dbal/DummyDatabaseAccess.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Quiz.iml" afterPath="$PROJECT_DIR$/Quiz.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dbal/DummyDatabaseAccess.java" afterPath="$PROJECT_DIR$/src/main/java/Dbal/DummyDatabaseAccess.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -62,11 +58,13 @@
       <file leaf-file-name="DummyDatabaseAccess.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Dbal/DummyDatabaseAccess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="27" column="77" lean-forward="false" selection-start-line="27" selection-start-column="77" selection-end-line="27" selection-end-column="77" />
+            <state relative-caret-position="112">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
-                <marker date="1527067877410" expanded="true" signature="783:797" ph="SELECT TOP 1... Contact" />
-                <marker date="1527067877410" expanded="true" signature="783:805" ph="SELECT * FRO... Question" />
+                <marker date="1527069193756" expanded="true" signature="783:790" ph="SELECT * AUT... " />
+                <marker date="1527069193756" expanded="true" signature="783:864" ph="SELECT * FRO... Questio" />
+                <marker date="1527069193756" expanded="true" signature="783:865" ph="SELECT * FRO... Question" />
+                <marker date="1527069193756" expanded="true" signature="783:916" ph="SELECT * FRO... Orders" />
               </folding>
             </state>
           </provider>
@@ -404,12 +402,12 @@
       <workItem from="1526457388030" duration="3000" />
       <workItem from="1526545829758" duration="15000" />
       <workItem from="1527058693268" duration="695000" />
-      <workItem from="1527061919430" duration="2396000" />
+      <workItem from="1527061919430" duration="3392000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3466000" />
+    <option name="totallyTimeSpent" value="4462000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -643,11 +641,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Dbal/DummyDatabaseAccess.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="27" column="77" lean-forward="false" selection-start-line="27" selection-start-column="77" selection-end-line="27" selection-end-column="77" />
+        <state relative-caret-position="112">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <marker date="1527067877410" expanded="true" signature="783:797" ph="SELECT TOP 1... Contact" />
-            <marker date="1527067877410" expanded="true" signature="783:805" ph="SELECT * FRO... Question" />
+            <marker date="1527069193756" expanded="true" signature="783:790" ph="SELECT * AUT... " />
+            <marker date="1527069193756" expanded="true" signature="783:864" ph="SELECT * FRO... Questio" />
+            <marker date="1527069193756" expanded="true" signature="783:865" ph="SELECT * FRO... Question" />
+            <marker date="1527069193756" expanded="true" signature="783:916" ph="SELECT * FRO... Orders" />
           </folding>
         </state>
       </provider>
