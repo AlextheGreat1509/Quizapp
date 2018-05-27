@@ -11,5 +11,8 @@ public class QuestionRepository {
         return questionContext.GetQuestion(id);
     }
 
+    public int GetAmountOfPossibleQuestionIDs(){
+        return questionContext.GetAmountOfPossibleQuestionIDs();
+    }
 
 }

@@ -1,10 +1,12 @@
 package models;
 
 public class Answer {
+    private int id;
     private String answer;
     private boolean correct;
 
-    public Answer(String answer, boolean correct) {
+    public Answer(int id, String answer, boolean correct) {
+        this.id = id;
         this.answer = answer;
         this.correct = correct;
     }
@@ -15,5 +17,9 @@ public class Answer {
 
     public boolean isCorrect() {
         return correct;
+    }
+
+    public int getId() {
+        return id;
     }
 }

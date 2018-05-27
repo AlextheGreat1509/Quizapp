@@ -4,4 +4,5 @@ import models.Question;
 
 public interface IQuestionContext extends IBaseContext {
     Question GetQuestion(int id);
+    int GetAmountOfPossibleQuestionIDs();
 }
