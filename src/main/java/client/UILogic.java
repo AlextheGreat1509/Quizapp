@@ -22,4 +22,9 @@ public class UILogic implements IUILogic{
             return game.PrepareRandomQuestion();
         }
     }
+
+    public Answer ProcessAnswer(Answer answer){
+        System.out.println(answer.getAnswer() + " " + answer.isCorrect());
+        return answer;
+    }
 }
