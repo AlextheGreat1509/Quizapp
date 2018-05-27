@@ -1,30 +1,36 @@
 package frontend;
 
+import client.IUILogic;
+import client.UILogic;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import models.Question;
 
 
 public class QuizApp extends Application {
+    private IUILogic logic = new UILogic();
+
+
     @Override
     public void start(Stage primaryStage) {
 
-        Text questionField = new Text("What is the capital of the Netherlands?");
+        Question question = logic.GetQuestion();
+        Text questionField = new Text(question.getQuestion());
         questionField.setTextAlignment(TextAlignment.CENTER);
-        Button btnAnswer1 = new Button("The Hague");
+        Button btnAnswer1 = new Button(question.getAnswers().get(0).getAnswer());
         btnAnswer1.setTextAlignment(TextAlignment.CENTER);
-        Button btnAnswer2 = new Button("Rotterdam");
+        Button btnAnswer2 = new Button(question.getAnswers().get(1).getAnswer());
         btnAnswer2.setTextAlignment(TextAlignment.CENTER);
-        Button btnAnswer3 = new Button("Maastricht");
+        Button btnAnswer3 = new Button(question.getAnswers().get(2).getAnswer());
         btnAnswer3.setTextAlignment(TextAlignment.CENTER);
-        Button btnAnswer4 = new Button("Amsterdam");
+        Button btnAnswer4 = new Button(question.getAnswers().get(3).getAnswer());
         btnAnswer4.setTextAlignment(TextAlignment.CENTER);
         VBox vboxQuestionWithAnswers = new VBox();
         vboxQuestionWithAnswers.getChildren().addAll(questionField,btnAnswer1,btnAnswer2,btnAnswer3,btnAnswer4);
