@@ -34,6 +34,6 @@ public class QuestionDatabaseContext extends BaseDatabaseContext implements IQue
             if (stmt != null) try { stmt.close(); } catch(Exception e) {}
             if (con != null) try { con.close(); } catch(Exception e) {}
         }
-        return new Question(new ArrayList<Answer>(), 1);
+        return new Question(new ArrayList<Answer>(), 1, "test");
     }
 }
