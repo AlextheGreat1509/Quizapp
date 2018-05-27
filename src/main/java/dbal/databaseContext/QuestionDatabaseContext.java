@@ -25,7 +25,6 @@ public class QuestionDatabaseContext extends BaseDatabaseContext implements IQue
 
             // Iterate through the data in the result set and display it.
             while (rs.next()) {
-                System.out.println("Data: " + rs.getString("ID") + " " + rs.getString("Question"));
                 answers.add(new Answer(rs.getInt("AnswerID"), rs.getString("Answer"), rs.getBoolean("Correct")));
                 questionID = rs.getInt("ID");
                 tempQuestion = rs.getString("Question");

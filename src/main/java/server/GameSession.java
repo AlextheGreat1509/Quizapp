@@ -5,6 +5,7 @@ import models.Question;
 import models.Round;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GameSession {
@@ -12,10 +13,16 @@ public class GameSession {
     private QuestionRepository questionRepository = new QuestionRepository();
 
     public Question PrepareRandomQuestion(){
+        ArrayList<Integer> questionsAsked = new ArrayList<Integer>();
+        questionsAsked.add(0);
+        int questionID = 0;
         int maxQuestions = questionRepository.GetAmountOfPossibleQuestionIDs();
         if (maxQuestions >= 1) {
             Random rand = new Random();
-            int questionID = rand.nextInt(maxQuestions) + 1;
+            while (questionsAsked.contains(questionID)) {
+                questionID = rand.nextInt(maxQuestions) + 1;
+            }
+            questionsAsked.add(questionID);
             return questionRepository.GetQuestion(questionID);
         }
         else {
