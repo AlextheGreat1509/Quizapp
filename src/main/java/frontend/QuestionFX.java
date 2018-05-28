@@ -26,11 +26,12 @@ public class QuestionFX extends Application {
     private IUILogic logic = new UILogic();
     Scene scene;
     Scene sceneTest;
+    Question question;
 
     @Override
     public void start(final Stage primaryStage) {
-        final Question question = logic.GetQuestion();
-        Text questionField = new Text(question.getQuestion());
+        question = logic.GetQuestion();
+        final Text questionField = new Text(question.getQuestion());
         ArrayList<Button> answerButtons = new ArrayList<Button>();
         for (final Answer answer : question.getAnswers()){
             Button button = new Button(answer.getAnswer());
@@ -56,7 +57,7 @@ public class QuestionFX extends Application {
         StackPane rootTest = new StackPane();
         root.getChildren().addAll(vboxQuestionWithAnswers);
         Button btn = new Button("Proceed");
-        rootTest.getChildren().addAll(questionField,btn);
+        rootTest.getChildren().addAll(btn);
         btn.setOnAction(new javafx.event.EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 primaryStage.setScene(scene);

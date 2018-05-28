@@ -1,16 +1,16 @@
 package server;
 
+import dbal.databaseContext.QuestionDatabaseContext;
 import dbal.repositories.QuestionRepository;
 import models.Question;
 import models.Round;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class GameSession {
 
-    private QuestionRepository questionRepository = new QuestionRepository();
+    private QuestionRepository questionRepository = new QuestionRepository(new QuestionDatabaseContext());
 
     public Question PrepareRandomQuestion(){
         ArrayList<Integer> questionsAsked = new ArrayList<Integer>();

@@ -1,11 +1,14 @@
 package dbal.repositories;
 
 import dbal.context.IQuestionContext;
-import dbal.databaseContext.QuestionDatabaseContext;
 import models.Question;
 
 public class QuestionRepository {
-    private IQuestionContext questionContext = new QuestionDatabaseContext();
+    private final IQuestionContext questionContext;
+
+    public QuestionRepository(IQuestionContext questionContext) {
+        this.questionContext = questionContext;
+    }
 
     public Question GetQuestion(int id){
         return questionContext.GetQuestion(id);
