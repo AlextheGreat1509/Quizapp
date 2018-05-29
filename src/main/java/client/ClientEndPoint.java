@@ -9,14 +9,15 @@ import javax.websocket.server.ServerEndpoint;
 public class ClientEndPoint{
 
     @OnOpen
-    public void onWebSocketConnect(Session sess)
+    public void onWebSocketConnect(Session session)
     {
-        System.out.println("Socket Connected: " + sess);
+        System.out.println("Socket Connected: " + session);
     }
 
     @OnMessage
     public void onWebSocketText(String message)
     {
+
         System.out.println("Received TEXT message: " + message);
     }
 

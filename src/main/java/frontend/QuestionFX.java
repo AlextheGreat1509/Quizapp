@@ -26,8 +26,12 @@ public class QuestionFX extends Application {
     Scene sceneTest;
     Question question;
 
-    @Override
-    public void start(final Stage primaryStage) {
+
+    void cleanup() {
+        // stop animations reset model ect.
+    }
+
+    void startGame(Stage stage) {
         question = logic.GetQuestion();
         final Text questionField = new Text(question.getQuestion());
         ArrayList<Button> answerButtons = new ArrayList<Button>();
@@ -37,7 +41,7 @@ public class QuestionFX extends Application {
             button.setOnAction(new javafx.event.EventHandler<ActionEvent>() {
                 public void handle(ActionEvent event) {
                     logic.ProcessAnswer(answer);
-                    primaryStage.setScene(sceneTest);
+                    stage.setScene(sceneTest);
                 }
             });
             answerButtons.add(button);
@@ -58,14 +62,26 @@ public class QuestionFX extends Application {
         rootTest.getChildren().addAll(btn);
         btn.setOnAction(new javafx.event.EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                primaryStage.setScene(scene);
+                restart(stage);
             }
         });
         scene = new Scene(root, 600, 250);
         sceneTest = new Scene(rootTest, 600, 250);
-        primaryStage.setTitle("Quiz App");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.setTitle("Quiz App");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    void restart(Stage stage) {
+        cleanup();
+        startGame(stage);
+    }
+
+    @Override
+    public void start(final Stage primaryStage) {
+
+        startGame(primaryStage);
+
     }
 
     public static void main(String[] args) {

@@ -22,7 +22,6 @@ public class WebSocketClient implements IWebSocketClient{
                 // Send a message
                 session.getBasicRemote().sendText(message);
                 // Close session
-                session.close();
             }
             finally
             {
@@ -32,7 +31,7 @@ public class WebSocketClient implements IWebSocketClient{
                 // the JSR-356 spec does not handle lifecycles (yet)
                 if (container instanceof LifeCycle)
                 {
-                    ((LifeCycle)container).stop();
+                    //((LifeCycle)container).stop();
                 }
             }
         }

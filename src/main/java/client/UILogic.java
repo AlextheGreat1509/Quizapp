@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class UILogic implements IUILogic{
     private final IWebSocketClient client;
     private Gson gson = new Gson();
+
     GameSession game = new GameSession();
     boolean useServer = true;
 
