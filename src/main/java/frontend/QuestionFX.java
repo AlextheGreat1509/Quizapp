@@ -1,13 +1,14 @@
 package frontend;
 
 import client.IUILogic;
+import client.IWebSocketClient;
 import client.UILogic;
+import client.WebSocketClient;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -16,14 +17,11 @@ import javafx.stage.Stage;
 import models.Answer;
 import models.Question;
 
-import javax.xml.transform.Source;
-import java.beans.EventHandler;
 import java.util.ArrayList;
-import java.util.Date;
 
 
 public class QuestionFX extends Application {
-    private IUILogic logic = new UILogic();
+    private IUILogic logic = new UILogic(new WebSocketClient());
     Scene scene;
     Scene sceneTest;
     Question question;

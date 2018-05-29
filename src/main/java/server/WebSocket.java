@@ -1,4 +1,4 @@
-package shared;
+package server;
 
 import com.google.gson.Gson;
 import models.Answer;
@@ -30,7 +30,7 @@ public class WebSocket
         Answer answer = gson.fromJson(message, Answer.class);
         GameSession game = new GameSession();
         Boolean result = game.CheckAnswer(answer);
-        System.out.println("Received TEXT message: " + result);
+        System.out.println("Answer result: " + result);
     }
 
     @OnClose

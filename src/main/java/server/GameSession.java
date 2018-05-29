@@ -2,6 +2,7 @@ package server;
 
 import dbal.databaseContext.QuestionDatabaseContext;
 import dbal.repositories.QuestionRepository;
+import models.Answer;
 import models.Question;
 import models.Round;
 
@@ -32,5 +33,9 @@ public class GameSession {
     public Round PrepareRound(){
         Question question = PrepareRandomQuestion();
         return new Round(question);
+    }
+
+    public boolean CheckAnswer(Answer answer){
+        return answer.isCorrect();
     }
 }

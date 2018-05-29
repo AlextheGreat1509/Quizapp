@@ -1,4 +1,5 @@
 package client;
 
-public class IWebSocketClient {
+public interface IWebSocketClient {
+    void SendMessage(String message);
 }

@@ -1,5 +1,6 @@
 package client;
 
+import com.google.gson.Gson;
 import models.Answer;
 import models.Question;
 import server.GameSession;
@@ -7,8 +8,14 @@ import server.GameSession;
 import java.util.ArrayList;
 
 public class UILogic implements IUILogic{
+    private final IWebSocketClient client;
+    private Gson gson = new Gson();
     GameSession game = new GameSession();
     boolean useServer = true;
+
+    public UILogic(IWebSocketClient client) {
+        this.client = client;
+    }
 
     public Question GetQuestion(){
         if (!useServer) {
@@ -23,8 +30,8 @@ public class UILogic implements IUILogic{
         }
     }
 
-    public Answer ProcessAnswer(Answer answer){
+    public void ProcessAnswer(Answer answer){
+        client.SendMessage(gson.toJson(answer));
         System.out.println(answer.getAnswer() + " " + answer.isCorrect());
-        return answer;
     }
 }

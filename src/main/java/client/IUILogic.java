@@ -5,5 +5,5 @@ import models.Question;
 
 public interface IUILogic {
     Question GetQuestion();
-    Answer ProcessAnswer(Answer answer);
+    void ProcessAnswer(Answer answer);
 }
