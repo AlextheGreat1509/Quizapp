@@ -47,7 +47,11 @@
             <artifactId>javax-websocket-server-impl</artifactId>
             <version>9.4.7.v20170914</version>
         </dependency>
-
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
