@@ -1,16 +1,22 @@
 package shared;
 
 import com.google.gson.Gson;
+import models.Answer;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-
-public class MessageToObject<T> {
+public class MessageToObject {
     Gson gson = new Gson();
 
-    public Object TranslateMessage(String message){
-        Type type = ((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-        T msg = gson.fromJson(message, type);
-        return msg;
+    public Object processMessage(String sessionId, String type, String data) {
+        //Get the last part from the full package and type name
+        String simpleType = type.split("\\.")[type.split("\\.").length - 1];
+
+        switch(simpleType)
+        {
+            case "Answer":
+                return gson.fromJson(data, Answer.class);
+            default:
+                return null;
+        }
     }
+
 }

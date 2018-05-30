@@ -3,9 +3,11 @@ package server;
 import com.google.gson.Gson;
 import models.Answer;
 import server.GameSession;
+import shared.EncapsulatingMessageGenerator;
 import shared.IMessageHandler;
 import shared.MessageGenerator;
 import shared.MessageToObject;
+import shared.messages.EncapsulatingMessage;
 
 import javax.websocket.ClientEndpoint;
 import javax.websocket.CloseReason;
@@ -23,8 +25,9 @@ import java.util.ArrayList;
 public class WebSocket implements IWebSocket{
     private static ArrayList<Session> sessions = new ArrayList<>();
     Gson gson = new Gson();
-    MessageGenerator messageGenerator = new MessageGenerator();
-    MessageToObject<Object> messageToObject = new MessageToObject<>();
+    //MessageGenerator messageGenerator = new MessageGenerator();
+    MessageToObject messageToObject = new MessageToObject();
+    EncapsulatingMessageGenerator messageGenerator = new EncapsulatingMessageGenerator();
 
     @OnOpen
     public void onWebSocketConnect(Session session)
@@ -36,8 +39,9 @@ public class WebSocket implements IWebSocket{
     @OnMessage
     public void onWebSocketText(String message, Session session)
     {
-        String SessionId = session.getId();
-        Answer answer = gson.fromJson(message,Answer.class);
+        String sessionId = session.getId();
+        EncapsulatingMessage encapMsg = gson.fromJson(message,EncapsulatingMessage.class);
+        Answer answer = (Answer) messageToObject.processMessage(sessionId ,encapMsg.getMessageType(),encapMsg.getMessageData());
         GameSession game = new GameSession();
         Boolean result = game.CheckAnswer(answer);
         sendTo(session.getId(),answer);
@@ -46,7 +50,7 @@ public class WebSocket implements IWebSocket{
 
     public void sendTo(String sessionId, Object object)
     {
-        String msg = messageGenerator.GenerateMessage(object);
+        String msg = messageGenerator.generateMessageString(object);
         sendToClient(getSessionFromId(sessionId), msg);
     }
 

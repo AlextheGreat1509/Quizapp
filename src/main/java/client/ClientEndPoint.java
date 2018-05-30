@@ -17,7 +17,6 @@ public class ClientEndPoint{
     @OnMessage
     public void onWebSocketText(String message)
     {
-
         System.out.println("Received TEXT message: " + message);
     }
 

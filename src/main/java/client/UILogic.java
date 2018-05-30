@@ -4,12 +4,14 @@ import com.google.gson.Gson;
 import models.Answer;
 import models.Question;
 import server.GameSession;
+import shared.EncapsulatingMessageGenerator;
 
 import java.util.ArrayList;
 
 public class UILogic implements IUILogic{
     private final IWebSocketClient client;
     private Gson gson = new Gson();
+    EncapsulatingMessageGenerator messageGenerator = new EncapsulatingMessageGenerator();
 
     GameSession game = new GameSession();
     boolean useServer = true;
@@ -27,12 +29,13 @@ public class UILogic implements IUILogic{
             answers.add(new Answer(4, "Maastricht", false));
             return new Question(answers, 1, "What is the capital of the Netherlands?");
         } else {
+
             return game.PrepareRandomQuestion();
         }
     }
 
     public void ProcessAnswer(Answer answer){
-        client.SendMessage(gson.toJson(answer));
+        client.SendMessage(messageGenerator.generateMessageString(answer));
         System.out.println(answer.getAnswer() + " " + answer.isCorrect());
     }
 }
