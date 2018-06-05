@@ -1,17 +1,10 @@
 package models;
 
-public class PlayerAnswer {
-
-    private Player player;
+public class PlayerAnswer{
     private Answer answer;
 
-    public PlayerAnswer(Player player, Answer answer) {
-        this.player = player;
+    public PlayerAnswer(Answer answer) {
         this.answer = answer;
-    }
-
-    public Player getPlayer() {
-        return player;
     }
 
     public Answer getAnswer() {

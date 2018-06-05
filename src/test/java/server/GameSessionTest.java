@@ -1,6 +1,7 @@
 package server;
 
 import models.Answer;
+import models.PlayerAnswer;
 import models.Question;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,7 +18,8 @@ public class GameSessionTest {
     public void CheckAnswerTest(){
         GameSession game = GetGameSession();
         Answer answer = new Answer(1, "Test123", true);
-        Assert.assertEquals(game.CheckAnswer(answer),answer.isCorrect());
+        PlayerAnswer playerAnswer = new PlayerAnswer(answer);
+        Assert.assertEquals(game.CheckAnswer(playerAnswer),playerAnswer.getAnswer().isCorrect());
     }
 
     @Test

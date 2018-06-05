@@ -3,6 +3,7 @@ package server;
 import dbal.databaseContext.QuestionDatabaseContext;
 import dbal.repositories.QuestionRepository;
 import models.Answer;
+import models.PlayerAnswer;
 import models.Question;
 import models.Round;
 
@@ -11,10 +12,10 @@ import java.util.Random;
 
 public class GameSession {
 
+    private ArrayList<Integer> questionsAsked = new ArrayList<Integer>();
     private QuestionRepository questionRepository = new QuestionRepository(new QuestionDatabaseContext());
 
     public Question PrepareRandomQuestion(){
-        ArrayList<Integer> questionsAsked = new ArrayList<Integer>();
         questionsAsked.add(0);
         int questionID = 0;
         int maxQuestions = questionRepository.GetAmountOfPossibleQuestionIDs();
@@ -30,12 +31,13 @@ public class GameSession {
             return null;
         }
     }
+
     public Round PrepareRound(){
         Question question = PrepareRandomQuestion();
         return new Round(question);
     }
 
-    public boolean CheckAnswer(Answer answer){
-        return answer.isCorrect();
+    public boolean CheckAnswer(PlayerAnswer playerAnswer){
+        return playerAnswer.getAnswer().isCorrect();
     }
 }
