@@ -39,12 +39,6 @@ public class WebSocket implements IWebSocket{
         String sessionId = session.getId();
         EncapsulatingMessage encapMsg = gson.fromJson(message,EncapsulatingMessage.class);
         messageToObjectServer.processMessage(sessionId ,encapMsg.getMessageType(),encapMsg.getMessageData(), gameSessionManager);
-
-       /* GameSession game = new GameSession();
-        Boolean result = game.CheckAnswer(answer);
-        sendTo(session.getId(),answer);
-        System.out.println("Answer result: " + result);
-        System.out.println("Answer result: " + session.getId()); */
     }
 
     public void sendTo(String sessionId, Object object)

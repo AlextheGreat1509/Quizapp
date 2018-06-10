@@ -4,10 +4,8 @@ import java.net.URI;
 
 import javax.websocket.*;
 
-import org.eclipse.jetty.util.component.LifeCycle;
-
 public class WebSocketClient implements IWebSocketClient{
-    URI uri = URI.create("ws://localhost:8080/quizapp/");
+    URI uri = URI.create("ws://localhost:8090/quizapp/");
     WebSocketContainer container = ContainerProvider.getWebSocketContainer();
     Session session = null;
 

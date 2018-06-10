@@ -1,24 +1,26 @@
 package client;
 
 import com.google.gson.Gson;
+import frontend.IQuestionFX;
+import frontend.QuestionFX;
 import models.Answer;
+import models.PlayerAnswer;
 import models.Question;
 import server.GameSession;
 import shared.EncapsulatingMessageGenerator;
+import shared.messages.PlayerReadyMessage;
 
 import java.util.ArrayList;
+import java.util.Set;
 
-public class UILogic implements IUILogic{
-    private final IWebSocketClient client;
+public final class UILogic implements IUILogic{
+    private IWebSocketClient client = new WebSocketClient();
     private Gson gson = new Gson();
     EncapsulatingMessageGenerator messageGenerator = new EncapsulatingMessageGenerator();
-
-    GameSession game = new GameSession();
     boolean useServer = true;
+    Question question;
 
-    public UILogic(IWebSocketClient client) {
-        this.client = client;
-    }
+    private static final UILogic INSTANCE = new UILogic();
 
     public Question GetQuestion(){
         if (!useServer) {
@@ -29,13 +31,26 @@ public class UILogic implements IUILogic{
             answers.add(new Answer(4, "Maastricht", false));
             return new Question(answers, 1, "What is the capital of the Netherlands?");
         } else {
-
-            return game.PrepareRandomQuestion();
+            return question;
         }
     }
 
     public void ProcessAnswer(Answer answer){
-        client.SendMessage(messageGenerator.generateMessageString(answer));
-        System.out.println(answer.getAnswer() + " " + answer.isCorrect());
+        PlayerAnswer playerAnswer = new PlayerAnswer(answer);
+        client.SendMessage(messageGenerator.generateMessageString(playerAnswer));
+        System.out.println(playerAnswer.getAnswer().getAnswer() + " " + playerAnswer.getAnswer().isCorrect());
+    }
+
+    public void SetQuestion(Question question) {
+        this.question = question;
+    }
+
+    public void Connect(){
+        PlayerReadyMessage msg = new PlayerReadyMessage();
+        client.SendMessage(messageGenerator.generateMessageString(msg));
+    }
+
+    public static UILogic getInstance(){
+        return INSTANCE;
     }
 }

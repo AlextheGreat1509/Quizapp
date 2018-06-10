@@ -2,10 +2,12 @@ package server.messagehandlers;
 
 import server.GameSession;
 
-public class BaseMessageHandler {
+public abstract class BaseMessageHandler {
     GameSession game;
+    String sessionId;
 
-    BaseMessageHandler(GameSession game){
+    BaseMessageHandler(GameSession game, String sessionId){
         this.game = game;
+        this.sessionId = sessionId;
     }
 }

@@ -2,11 +2,10 @@ package server;
 
 import dbal.databaseContext.QuestionDatabaseContext;
 import dbal.repositories.QuestionRepository;
-import models.Answer;
-import models.PlayerAnswer;
-import models.Question;
-import models.Round;
+import javafx.print.PageLayout;
+import models.*;
 
+import javax.websocket.Session;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -14,6 +13,14 @@ public class GameSession {
 
     private ArrayList<Integer> questionsAsked = new ArrayList<Integer>();
     private QuestionRepository questionRepository = new QuestionRepository(new QuestionDatabaseContext());
+    private IWebSocket iWebSocket = new WebSocket();
+    private ArrayList<Player> players = new ArrayList<Player>();
+    private ArrayList<Session>sessions = new ArrayList<>();
+
+    GameSession(ArrayList<Session> sessions){
+        this.sessions = sessions;
+        PrepareRound();
+    }
 
     public Question PrepareRandomQuestion(){
         questionsAsked.add(0);
@@ -34,10 +41,17 @@ public class GameSession {
 
     public Round PrepareRound(){
         Question question = PrepareRandomQuestion();
+        SendMessageToPlayers(question);
         return new Round(question);
     }
 
-    public boolean CheckAnswer(PlayerAnswer playerAnswer){
+    public void SendMessageToPlayers(Object object){
+        for (Session session : sessions) {
+            iWebSocket.sendTo(session.getId(), object);
+        }
+    }
+    public boolean CheckAnswer(PlayerAnswer playerAnswer, String sessionId){
+        iWebSocket.sendTo(sessionId, playerAnswer);
         return playerAnswer.getAnswer().isCorrect();
     }
 }

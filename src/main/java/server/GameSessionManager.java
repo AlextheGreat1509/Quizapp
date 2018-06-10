@@ -15,8 +15,8 @@ public class GameSessionManager {
     }
 
     public void matchSessions(){
-        if (sessionsList.size() >= 2){
-            GameSession game = new GameSession();
+        if (sessionsList.size() >= 1){
+            GameSession game = new GameSession(sessionsList);
             for(Session session : sessionsList) {
                 gameSessionsMap.put(session.getId(), game);
             }

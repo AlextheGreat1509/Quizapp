@@ -13,7 +13,7 @@ public class WebSocketServer
     {
         Server server = new Server();
         ServerConnector connector = new ServerConnector(server);
-        connector.setPort(8080);
+        connector.setPort(8090);
         server.addConnector(connector);
 
         // Setup the basic application "context" for this application at "/"

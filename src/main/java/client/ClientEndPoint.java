@@ -1,12 +1,14 @@
 package client;
 
-import server.GameSession;
+import com.google.gson.Gson;
+import shared.messages.EncapsulatingMessage;
 
 import javax.websocket.*;
-import javax.websocket.server.ServerEndpoint;
 
 @ClientEndpoint
 public class ClientEndPoint{
+    Gson gson = new Gson();
+    MessageToObjectClient messageToObjectClient = new MessageToObjectClient();
 
     @OnOpen
     public void onWebSocketConnect(Session session)
@@ -17,7 +19,9 @@ public class ClientEndPoint{
     @OnMessage
     public void onWebSocketText(String message)
     {
-        System.out.println("Received TEXT message: " + message);
+        EncapsulatingMessage encapMsg = gson.fromJson(message,EncapsulatingMessage.class);
+        messageToObjectClient.processMessage(encapMsg.getMessageType(),encapMsg.getMessageData());
+        System.out.println("Received TEXT message: " + encapMsg.getMessageType());
     }
 
     @OnClose

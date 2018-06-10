@@ -5,11 +5,11 @@ import server.GameSession;
 
 public class PlayerAnswerMessageHandler extends BaseMessageHandler{
 
-    public PlayerAnswerMessageHandler(GameSession game){
-        super(game);
+    public PlayerAnswerMessageHandler(GameSession game, String sessionId){
+        super(game, sessionId);
     }
 
     public void HandlePlayerAnswer(PlayerAnswer playerAnswer) {
-        game.CheckAnswer(playerAnswer);
+        game.CheckAnswer(playerAnswer, sessionId);
     }
 }

@@ -1,9 +1,7 @@
 package frontend;
 
 import client.IUILogic;
-import client.IWebSocketClient;
 import client.UILogic;
-import client.WebSocketClient;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
@@ -18,13 +16,15 @@ import models.Answer;
 import models.Question;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 
-public class QuestionFX extends Application {
-    private IUILogic logic = new UILogic(new WebSocketClient());
-    Scene scene;
-    Scene sceneTest;
-    Question question;
+public class QuestionFX extends Application implements IQuestionFX {
+    private IUILogic logic = UILogic.getInstance();
+    private Scene scene;
+    private Scene sceneTest;
+    private Question question;
+    private Stage stage;
 
 
     void cleanup() {
@@ -32,7 +32,6 @@ public class QuestionFX extends Application {
     }
 
     void startGame(Stage stage) {
-        question = logic.GetQuestion();
         final Text questionField = new Text(question.getQuestion());
         ArrayList<Button> answerButtons = new ArrayList<Button>();
         for (final Answer answer : question.getAnswers()){
@@ -78,10 +77,26 @@ public class QuestionFX extends Application {
     }
 
     @Override
-    public void start(final Stage primaryStage) {
-
+    public void start(final Stage primaryStage){
+        logic.Connect();
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        question = logic.GetQuestion();
+        setStage(primaryStage);
         startGame(primaryStage);
 
+    }
+
+    void setStage(Stage stage){
+        this.stage = stage;
+    }
+
+    public void updateQuestionUI(Question question){
+        this.question = question;
+        restart(stage);
     }
 
     public static void main(String[] args) {
