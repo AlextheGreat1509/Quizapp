@@ -1,19 +1,22 @@
 package models;
 
+import server.GameSession;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class RoundResult {
-    private Player player;
-    private boolean correct;
 
-    public RoundResult(Player player, boolean correct) {
-        this.player = player;
-        this.correct = correct;
+    private Map<Player, Boolean> roundresult = new HashMap<Player, Boolean>();
+
+    public RoundResult() {
     }
 
-    public boolean isCorrect() {
-        return correct;
+    public Map<Player, Boolean> getRoundresult() {
+        return roundresult;
     }
 
-    public Player getPlayer() {
-        return player;
+    public void addResultToRound(Player player, Boolean correct){
+        roundresult.put(player, correct);
     }
 }

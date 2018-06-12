@@ -16,6 +16,8 @@ public class GameSession {
     private IWebSocket iWebSocket = new WebSocket();
     private ArrayList<Player> players = new ArrayList<Player>();
     private ArrayList<Session>sessions = new ArrayList<>();
+    private ArrayList<String>roundSessions = new ArrayList<>();
+    private RoundResult roundResult = new RoundResult();
 
     GameSession(ArrayList<Session> sessions){
         this.sessions = sessions;
@@ -41,6 +43,9 @@ public class GameSession {
 
     public Round PrepareRound(){
         Question question = PrepareRandomQuestion();
+        for (Session session : sessions){
+            roundSessions.add(session.getId());
+        }
         SendMessageToPlayers(question);
         return new Round(question);
     }
@@ -51,7 +56,17 @@ public class GameSession {
         }
     }
     public boolean CheckAnswer(PlayerAnswer playerAnswer, String sessionId){
-        iWebSocket.sendTo(sessionId, playerAnswer);
+        if (!roundSessions.isEmpty()){
+            int i = 0;
+            for (String roundsessionId : roundSessions) {
+                if (roundsessionId == sessionId) {
+                    //TODO add roundresult.addresult here
+                    roundSessions.remove(i);
+                }
+                i++;
+            }
+        }
+        iWebSocket.sendTo(sessionId, playerAnswer.getAnswer().isCorrect());
         return playerAnswer.getAnswer().isCorrect();
     }
 }

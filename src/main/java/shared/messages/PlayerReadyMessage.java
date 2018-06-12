@@ -1,4 +1,4 @@
 package shared.messages;
 
-public class PlayerReadyMessage {
+public class PlayerReadyMessage extends BaseMessage {
 }
