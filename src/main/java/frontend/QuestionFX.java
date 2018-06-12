@@ -40,7 +40,17 @@ public class QuestionFX extends Application implements IQuestionFX {
         TextField textPassword = new TextField("Password");
         Button btnRegister = new Button("Register");
         btnRegister.setOnAction(event ->{
-            iAuthenticationController.Register(textUsername.getText(), textPassword.getText());
+            if (iAuthenticationController.Register(textUsername.getText(), textPassword.getText())){
+                logic.Connect();
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                question = logic.GetQuestion();
+                goQuestionStage(stage);
+            }
+
         });
         Button btnLogin = new Button("Login");
         VBox vboxLogin = new VBox();
@@ -94,6 +104,11 @@ public class QuestionFX extends Application implements IQuestionFX {
     void restart(Stage stage) {
         cleanup();
         startGame(stage);
+    }
+
+    void goQuestionStage(Stage stage) {
+        cleanup();
+        questionStage(stage);
     }
 
     @Override

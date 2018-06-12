@@ -39,7 +39,7 @@ public class RestClient implements IRestClient {
                 result.append(line);
             }
             System.out.println("Json: " + result.toString());
-
+            return gson.fromJson(result.toString(), Boolean.class);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,6 +74,7 @@ public class RestClient implements IRestClient {
                 result.append(line);
             }
             System.out.println("Json: " + result.toString());
+            return gson.fromJson(result.toString(), Boolean.class);
 
         } catch (IOException e) {
             e.printStackTrace();
