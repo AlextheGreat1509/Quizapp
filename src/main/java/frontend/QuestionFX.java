@@ -5,6 +5,7 @@ import client.UILogic;
 import client.authentication.AuthenticationController;
 import client.authentication.IAuthenticationController;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,6 +17,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import models.Answer;
+import models.PlayerFound;
 import models.Question;
 
 import java.util.ArrayList;
@@ -23,12 +25,18 @@ import java.util.concurrent.TimeUnit;
 
 
 public class QuestionFX extends Application implements IQuestionFX {
-    private IUILogic logic = UILogic.getInstance();
+    private IUILogic logic;
     private Scene scene;
     private Scene sceneTest;
     private Question question;
     private Stage stage;
-    private IAuthenticationController iAuthenticationController = new AuthenticationController();
+    private IAuthenticationController iAuthenticationController;
+
+    public QuestionFX() {
+        iAuthenticationController = new AuthenticationController();
+        logic = UILogic.getInstance();
+        logic.setUI(this);
+    }
 
 
     void cleanup() {
@@ -42,17 +50,15 @@ public class QuestionFX extends Application implements IQuestionFX {
         btnRegister.setOnAction(event ->{
             if (iAuthenticationController.Register(textUsername.getText(), textPassword.getText())){
                 logic.Connect();
-                try {
-                    TimeUnit.SECONDS.sleep(1);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                question = logic.GetQuestion();
-                goQuestionStage(stage);
             }
 
         });
         Button btnLogin = new Button("Login");
+        btnLogin.setOnAction(event -> {
+            if (iAuthenticationController.Login(textUsername.getText(), textPassword.getText())){
+                logic.Connect();
+            }
+        });
         VBox vboxLogin = new VBox();
         vboxLogin.getChildren().addAll(textUsername, textPassword, btnRegister, btnLogin);
         StackPane root = new StackPane();
@@ -103,7 +109,7 @@ public class QuestionFX extends Application implements IQuestionFX {
 
     void restart(Stage stage) {
         cleanup();
-        startGame(stage);
+        questionStage(stage);
     }
 
     void goQuestionStage(Stage stage) {
@@ -131,7 +137,12 @@ public class QuestionFX extends Application implements IQuestionFX {
 
     public void updateQuestionUI(Question question){
         this.question = question;
-        restart(stage);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                goQuestionStage(stage);
+            }
+        });
     }
 
     public static void main(String[] args) {

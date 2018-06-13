@@ -4,23 +4,29 @@ import dbal.databaseContext.QuestionDatabaseContext;
 import dbal.repositories.QuestionRepository;
 import javafx.print.PageLayout;
 import models.*;
+import shared.EncapsulatingMessageGenerator;
+import shared.messages.EncapsulatingMessage;
 
 import javax.websocket.Session;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class GameSession {
 
     private ArrayList<Integer> questionsAsked = new ArrayList<Integer>();
-    private QuestionRepository questionRepository = new QuestionRepository(new QuestionDatabaseContext());
-    private IWebSocket iWebSocket = new WebSocket();
+    private QuestionRepository questionRepository;
     private ArrayList<Player> players = new ArrayList<Player>();
     private ArrayList<Session>sessions = new ArrayList<>();
     private ArrayList<String>roundSessions = new ArrayList<>();
     private RoundResult roundResult = new RoundResult();
+    private IMessageSender iMessageSender;
 
     GameSession(ArrayList<Session> sessions){
         this.sessions = sessions;
+        questionRepository = new QuestionRepository(new QuestionDatabaseContext());
+        iMessageSender = new MessageSender();
+        iMessageSender.setSessions(sessions);
         PrepareRound();
     }
 
@@ -47,12 +53,13 @@ public class GameSession {
             roundSessions.add(session.getId());
         }
         SendMessageToPlayers(question);
+
         return new Round(question);
     }
 
     public void SendMessageToPlayers(Object object){
         for (Session session : sessions) {
-            iWebSocket.sendTo(session.getId(), object);
+                iMessageSender.sendTo(session.getId(), object);
         }
     }
     public boolean CheckAnswer(PlayerAnswer playerAnswer, String sessionId){
@@ -66,7 +73,7 @@ public class GameSession {
                 i++;
             }
         }
-        iWebSocket.sendTo(sessionId, playerAnswer.getAnswer().isCorrect());
+        iMessageSender.sendTo(sessionId, playerAnswer.getAnswer().isCorrect());
         return playerAnswer.getAnswer().isCorrect();
     }
 }

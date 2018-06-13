@@ -1,6 +1,8 @@
 package models;
 
-public class Answer {
+import java.util.Observable;
+
+public class Answer extends Observable {
     private int id;
     private String answer;
     private boolean correct;

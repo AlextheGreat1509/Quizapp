@@ -3,7 +3,11 @@ package client.authentication;
 import models.Player;
 
 public class AuthenticationController implements IAuthenticationController {
-    IRestClient iRestClient = new RestClient();
+    private IRestClient iRestClient;
+
+    public AuthenticationController() {
+        iRestClient = new RestClient();
+    }
 
     public boolean Login(String username, String password){
         return iRestClient.Login(new Player(username,password));

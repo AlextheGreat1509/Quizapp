@@ -5,33 +5,44 @@ import frontend.IQuestionFX;
 import frontend.QuestionFX;
 import models.Answer;
 import models.PlayerAnswer;
+import models.PlayerFound;
 import models.Question;
-import server.GameSession;
 import shared.EncapsulatingMessageGenerator;
 import shared.messages.PlayerReadyMessage;
 
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.Observer;
 
-public final class UILogic implements IUILogic{
-    private IWebSocketClient client = new WebSocketClient();
+public final class UILogic implements IUILogic, Observer{
+    private IWebSocketClient client;
     private Gson gson = new Gson();
-    EncapsulatingMessageGenerator messageGenerator = new EncapsulatingMessageGenerator();
+    private EncapsulatingMessageGenerator messageGenerator = new EncapsulatingMessageGenerator();
     boolean useServer = true;
-    Question question;
+    private Question question;
+    PlayerFound playerFound = new PlayerFound();
+    private IQuestionFX questionFX;
 
     private static final UILogic INSTANCE = new UILogic();
 
-    public Question GetQuestion(){
+    private UILogic() {
+        client = new WebSocketClient();
+    }
+
+    public void setUI(QuestionFX questionFX){
+        this.questionFX = questionFX;
+    }
+
+    public void GetQuestion(){
         if (!useServer) {
             ArrayList<Answer> answers = new ArrayList<Answer>();
             answers.add(new Answer(1, "The Hague", false));
             answers.add(new Answer(2, "Rotterdam", false));
             answers.add(new Answer(3, "Amsterdam", true));
             answers.add(new Answer(4, "Maastricht", false));
-            return new Question(answers, 1, "What is the capital of the Netherlands?");
+            question = new Question(answers, 1, "What is the capital of the Netherlands?");
+            questionFX.updateQuestionUI(question);
         } else {
-            return question;
+            questionFX.updateQuestionUI(question);
         }
     }
 
@@ -43,6 +54,7 @@ public final class UILogic implements IUILogic{
 
     public void SetQuestion(Question question) {
         this.question = question;
+        questionFX.updateQuestionUI(question);
     }
 
     public void Connect(){
@@ -50,7 +62,17 @@ public final class UILogic implements IUILogic{
         client.SendMessage(messageGenerator.generateMessageString(msg));
     }
 
+    public boolean PlayerFound(){
+        playerFound.addObserver(this);
+        return playerFound.isPlayerFound();
+    }
+
     public static UILogic getInstance(){
         return INSTANCE;
+    }
+
+    @Override
+    public void update(java.util.Observable o, Object arg) {
+        questionFX.updateQuestionUI(new Question(null,0,null));
     }
 }

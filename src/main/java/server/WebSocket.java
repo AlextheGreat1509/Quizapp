@@ -19,10 +19,16 @@ import java.util.ArrayList;
 @ServerEndpoint(value="/quizapp/")
 public class WebSocket implements IWebSocket{
     private static ArrayList<Session> sessions = new ArrayList<>();
-    Gson gson = new Gson();
-    GameSessionManager gameSessionManager = new GameSessionManager();
-    MessageToObjectServer messageToObjectServer = new MessageToObjectServer();
-    EncapsulatingMessageGenerator messageGenerator = new EncapsulatingMessageGenerator();
+    private Gson gson = new Gson();
+    private GameSessionManager gameSessionManager;
+    private MessageToObjectServer messageToObjectServer;
+    private EncapsulatingMessageGenerator messageGenerator;
+
+    public WebSocket() {
+        messageGenerator = new EncapsulatingMessageGenerator();
+        messageToObjectServer = new MessageToObjectServer();
+        gameSessionManager = new GameSessionManager();
+    }
 
     @OnOpen
     public void onWebSocketConnect(Session session)

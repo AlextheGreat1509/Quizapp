@@ -5,9 +5,9 @@ import java.net.URI;
 import javax.websocket.*;
 
 public class WebSocketClient implements IWebSocketClient{
-    URI uri = URI.create("ws://localhost:8090/quizapp/");
-    WebSocketContainer container = ContainerProvider.getWebSocketContainer();
-    Session session = null;
+    private URI uri = URI.create("ws://localhost:8090/quizapp/");
+    private WebSocketContainer container = ContainerProvider.getWebSocketContainer();
+    private Session session = null;
 
     public void SendMessage(String message){
             try

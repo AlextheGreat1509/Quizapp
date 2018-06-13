@@ -15,8 +15,9 @@ import java.io.InputStreamReader;
 
 public class RestClient implements IRestClient {
 
+    Gson gson = new Gson();
+
     public boolean Login(Player player) {
-        Gson gson = new Gson();
         String payload = gson.toJson(player);
         StringEntity entity = new StringEntity(payload,
                 ContentType.APPLICATION_JSON);
@@ -28,18 +29,7 @@ public class RestClient implements IRestClient {
         HttpResponse response = null;
         try {
             response = httpClient.execute(request);
-
-            BufferedReader rd;
-            rd = new BufferedReader(
-                    new InputStreamReader(response.getEntity().getContent()));
-
-            StringBuilder result = new StringBuilder();
-            String line = "";
-            while ((line = rd.readLine()) != null) {
-                result.append(line);
-            }
-            System.out.println("Json: " + result.toString());
-            return gson.fromJson(result.toString(), Boolean.class);
+            return GetBooleanFromResponse(response);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,7 +41,6 @@ public class RestClient implements IRestClient {
     }
 
     public boolean Register(Player player) {
-        Gson gson = new Gson();
         String payload = gson.toJson(player);
         StringEntity entity = new StringEntity(payload,
                 ContentType.APPLICATION_JSON);
@@ -63,7 +52,18 @@ public class RestClient implements IRestClient {
         HttpResponse response = null;
         try {
             response = httpClient.execute(request);
+            return GetBooleanFromResponse(response);
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(response.getStatusLine().getStatusCode() + " " + response.getStatusLine().getReasonPhrase());
+
+        return false;
+    }
+
+    private Boolean GetBooleanFromResponse(HttpResponse response){
+        try {
             BufferedReader rd;
             rd = new BufferedReader(
                     new InputStreamReader(response.getEntity().getContent()));
@@ -76,11 +76,9 @@ public class RestClient implements IRestClient {
             System.out.println("Json: " + result.toString());
             return gson.fromJson(result.toString(), Boolean.class);
 
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
         }
-        System.out.println(response.getStatusLine().getStatusCode() + " " + response.getStatusLine().getReasonPhrase());
-
         return false;
     }
 }

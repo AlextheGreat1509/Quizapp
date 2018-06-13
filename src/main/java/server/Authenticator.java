@@ -6,7 +6,11 @@ import models.Player;
 
 public class Authenticator implements IAuthenticator {
 
-    PlayerRepository playerRepository = new PlayerRepository(new PlayerDatabaseContext());
+    private PlayerRepository playerRepository;
+
+    public Authenticator() {
+        playerRepository = new PlayerRepository(new PlayerDatabaseContext());
+    }
 
     public boolean VerifyLogin(Player player){
         return playerRepository.Login(player);

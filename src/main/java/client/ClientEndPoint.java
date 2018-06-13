@@ -7,8 +7,12 @@ import javax.websocket.*;
 
 @ClientEndpoint
 public class ClientEndPoint{
-    Gson gson = new Gson();
-    MessageToObjectClient messageToObjectClient = new MessageToObjectClient();
+    private Gson gson = new Gson();
+    private MessageToObjectClient messageToObjectClient;
+
+    public ClientEndPoint() {
+        messageToObjectClient = new MessageToObjectClient();
+    }
 
     @OnOpen
     public void onWebSocketConnect(Session session)
@@ -20,8 +24,8 @@ public class ClientEndPoint{
     public void onWebSocketText(String message)
     {
         EncapsulatingMessage encapMsg = gson.fromJson(message,EncapsulatingMessage.class);
-        messageToObjectClient.processMessage(encapMsg.getMessageType(),encapMsg.getMessageData());
         System.out.println("Received TEXT message: " + encapMsg.getMessageType());
+        messageToObjectClient.processMessage(encapMsg.getMessageType(),encapMsg.getMessageData());
     }
 
     @OnClose
