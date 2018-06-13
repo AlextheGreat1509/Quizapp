@@ -27,7 +27,7 @@ public class WebSocket implements IWebSocket{
     public WebSocket() {
         messageGenerator = new EncapsulatingMessageGenerator();
         messageToObjectServer = new MessageToObjectServer();
-        gameSessionManager = new GameSessionManager();
+        gameSessionManager = GameSessionManager.getInstance();
     }
 
     @OnOpen
