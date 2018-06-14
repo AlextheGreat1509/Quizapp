@@ -9,6 +9,7 @@ import shared.messages.PlayerReadyMessage;
 
 import java.util.ArrayList;
 import java.util.Observer;
+import java.util.Set;
 
 public final class UILogic implements IUILogic, Observer{
     private IWebSocketClient client;
@@ -66,7 +67,7 @@ public final class UILogic implements IUILogic, Observer{
     }
 
     public void setRoundResult(RoundResult roundResult){
-        ;
+        questionFX.updateResultUI(roundResult);
     }
 
     public static UILogic getInstance(){

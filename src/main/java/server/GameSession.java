@@ -69,11 +69,15 @@ public class GameSession {
     }
     public void CheckAnswer(PlayerAnswer playerAnswer, String sessionId){
         if (roundSessions.size() != sessions.size()){
-            roundSessions.add(sessionId);
             for (String roundsessionId : roundSessions) {
                 if (!roundsessionId.equals(sessionId)) {
-                    roundResult.addResultToRound(getPlayerFromSessionId(sessionId),playerAnswer.getAnswer().isCorrect());
+                    roundResult.addResultToRound(getPlayerFromSessionId(sessionId).getUsername(),playerAnswer.getAnswer().isCorrect());
+                    roundSessions.add(sessionId);
                 }
+            }
+            if (roundSessions.isEmpty()){
+                roundResult.addResultToRound(getPlayerFromSessionId(sessionId).getUsername(),playerAnswer.getAnswer().isCorrect());
+                roundSessions.add(sessionId);
             }
             if (roundSessions.size() == sessions.size()){
                 SendMessageToPlayers(roundResult);

@@ -7,16 +7,16 @@ import java.util.Map;
 
 public class RoundResult {
 
-    private Map<Player, Boolean> roundresult = new HashMap<Player, Boolean>();
+    private Map<String, Boolean> roundresult = new HashMap<String, Boolean>();
 
     public RoundResult() {
     }
 
-    public Map<Player, Boolean> getRoundresult() {
+    public Map<String, Boolean> getRoundresult() {
         return roundresult;
     }
 
-    public void addResultToRound(Player player, Boolean correct){
-        roundresult.put(player, correct);
+    public void addResultToRound(String username, Boolean correct){
+        roundresult.put(username, correct);
     }
 }

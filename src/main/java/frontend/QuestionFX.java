@@ -11,6 +11,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -19,8 +20,10 @@ import javafx.stage.Stage;
 import models.Answer;
 import models.PlayerFound;
 import models.Question;
+import models.RoundResult;
 
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 
@@ -77,7 +80,7 @@ public class QuestionFX extends Application implements IQuestionFX {
             button.setTextAlignment(TextAlignment.CENTER);
             button.setOnAction(event -> {
                 logic.ProcessAnswer(answer);
-                resultStage(stage);
+                goResultStage(stage, null);
             });
             answerButtons.add(button);
         }
@@ -98,15 +101,32 @@ public class QuestionFX extends Application implements IQuestionFX {
         stage.show();
     }
 
-    void resultStage(Stage stage){
+    void resultStage(Stage stage, RoundResult roundResult){
         StackPane root = new StackPane();
-        Button btn = new Button("Proceed");
-        root.getChildren().addAll(btn);
-        btn.setOnAction(new javafx.event.EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                restart(stage);
+        if (roundResult == null){
+            Text notFinishText = new Text("Not all players have finished answering");
+            root.getChildren().addAll(notFinishText);
+        } else {
+            Button btn = new Button("Proceed");
+            Text resultHeaderText = new Text("Results: ");
+            resultHeaderText.setTextAlignment(TextAlignment.CENTER);
+            Set<String> players = roundResult.getRoundresult().keySet();
+            VBox resultVBox = new VBox();
+            resultVBox.getChildren().addAll(resultHeaderText);
+            for (String player : players) {
+                Text playerText = new Text(player);
+                Text resultText = new Text(roundResult.getRoundresult().get(player).toString());
+                HBox resultHBox = new HBox();
+                resultHBox.getChildren().addAll(playerText, resultText);
+                resultVBox.getChildren().add(resultHBox);
             }
-        });
+            root.getChildren().addAll(resultVBox,btn);
+            btn.setOnAction(new javafx.event.EventHandler<ActionEvent>() {
+                public void handle(ActionEvent event) {
+                    restart(stage);
+                }
+            });
+        }
         scene = new Scene(root, 600, 250);
         stage.setTitle("Quiz App");
         stage.setScene(scene);
@@ -121,6 +141,11 @@ public class QuestionFX extends Application implements IQuestionFX {
     void goQuestionStage(Stage stage) {
         cleanup();
         questionStage(stage);
+    }
+
+    void goResultStage(Stage stage, RoundResult roundResult) {
+        cleanup();
+        resultStage(stage, roundResult);
     }
 
     @Override
@@ -147,6 +172,15 @@ public class QuestionFX extends Application implements IQuestionFX {
             @Override
             public void run() {
                 goQuestionStage(stage);
+            }
+        });
+    }
+
+    public void updateResultUI(RoundResult roundResult){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                goResultStage(stage, roundResult);
             }
         });
     }
