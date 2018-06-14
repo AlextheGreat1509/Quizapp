@@ -10,6 +10,8 @@ import shared.messages.EncapsulatingMessage;
 import javax.websocket.Session;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class GameSession {
@@ -17,17 +19,22 @@ public class GameSession {
     private ArrayList<Integer> questionsAsked = new ArrayList<Integer>();
     private QuestionRepository questionRepository;
     private ArrayList<Player> players = new ArrayList<Player>();
-    private ArrayList<Session>sessions = new ArrayList<>();
-    private ArrayList<String>roundSessions = new ArrayList<>();
+    private ArrayList<Session> sessions;
+    private ArrayList<String> roundSessions = new ArrayList<>();
     private RoundResult roundResult = new RoundResult();
-    private IMessageSender iMessageSender;
+    private final IMessageSender iMessageSender;
+    private Map<String, Player> playerSessions = new HashMap<>();
 
-    GameSession(ArrayList<Session> sessions){
-        this.sessions = sessions;
+    GameSession(ArrayList<Session> gameSessions){
+        sessions = new ArrayList<>(gameSessions);
         questionRepository = new QuestionRepository(new QuestionDatabaseContext());
         iMessageSender = new MessageSender();
         iMessageSender.setSessions(sessions);
         PrepareRound();
+    }
+
+    public void addPlayerSession(Player player, String sessionId){
+        playerSessions.put(sessionId, player);
     }
 
     public Question PrepareRandomQuestion(){
@@ -49,9 +56,7 @@ public class GameSession {
 
     public Round PrepareRound(){
         Question question = PrepareRandomQuestion();
-        for (Session session : sessions){
-            roundSessions.add(session.getId());
-        }
+        roundSessions.clear();
         SendMessageToPlayers(question);
 
         return new Round(question);
@@ -62,18 +67,23 @@ public class GameSession {
                 iMessageSender.sendTo(session.getId(), object);
         }
     }
-    public boolean CheckAnswer(PlayerAnswer playerAnswer, String sessionId){
-        if (!roundSessions.isEmpty()){
-            int i = 0;
+    public void CheckAnswer(PlayerAnswer playerAnswer, String sessionId){
+        if (roundSessions.size() != sessions.size()){
+            roundSessions.add(sessionId);
             for (String roundsessionId : roundSessions) {
-                if (roundsessionId == sessionId) {
-                    //TODO add roundresult.addresult here
-                    roundSessions.remove(i);
+                if (!roundsessionId.equals(sessionId)) {
+                    roundResult.addResultToRound(getPlayerFromSessionId(sessionId),playerAnswer.getAnswer().isCorrect());
                 }
-                i++;
             }
+            if (roundSessions.size() == sessions.size()){
+                SendMessageToPlayers(roundResult);
+            }
+        } else {
+            SendMessageToPlayers(roundResult);
         }
-        iMessageSender.sendTo(sessionId, playerAnswer.getAnswer().isCorrect());
-        return playerAnswer.getAnswer().isCorrect();
+    }
+
+    public Player getPlayerFromSessionId(String sessionId){
+        return playerSessions.get(sessionId);
     }
 }

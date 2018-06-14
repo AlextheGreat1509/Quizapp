@@ -11,5 +11,6 @@ public class PlayerReadyMessageHandler extends BaseMessageHandler{
     }
 
     public void HandlePlayerReady(PlayerReadyMessage playerReadyMessage) {
+        game.addPlayerSession(playerReadyMessage.getPlayer(),sessionId);
     }
 }

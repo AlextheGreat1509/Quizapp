@@ -1,8 +1,10 @@
 package client;
 
 import client.messagehandlers.QuestionMessageHandler;
+import client.messagehandlers.RoundResultMessageHandler;
 import com.google.gson.Gson;
 import models.Question;
+import models.RoundResult;
 
 public class MessageToObjectClient {
     private Gson gson = new Gson();
@@ -22,6 +24,10 @@ public class MessageToObjectClient {
             case "Answer":
                 System.out.println(data);
                 break;
+            case "RoundResult":
+                System.out.println("Roundresult received");
+                RoundResultMessageHandler roundResultMessageHandler = new RoundResultMessageHandler(logic);
+                roundResultMessageHandler.HandleRoundResult(gson.fromJson(data, RoundResult.class));
             default:
         }
     }

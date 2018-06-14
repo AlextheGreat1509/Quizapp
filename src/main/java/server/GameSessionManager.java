@@ -7,7 +7,7 @@ import java.util.Map;
 
 public final class GameSessionManager {
     private ArrayList<Session> sessionsList = new ArrayList<>();
-    private Map<String,GameSession> gameSessionsMap = new HashMap<String, GameSession>();
+    private Map<String,GameSession> gameSessionsMap = new HashMap<>();
 
     private static final GameSessionManager INSTANCE = new GameSessionManager();
 
@@ -17,7 +17,7 @@ public final class GameSessionManager {
     }
 
     public void matchSessions(){
-        if (sessionsList.size() >= 2){
+        if (sessionsList.size() >= 1){
             GameSession game = new GameSession(sessionsList);
             for(Session session : sessionsList) {
                 gameSessionsMap.put(session.getId(), game);

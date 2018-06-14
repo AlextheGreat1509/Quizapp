@@ -49,14 +49,14 @@ public class QuestionFX extends Application implements IQuestionFX {
         Button btnRegister = new Button("Register");
         btnRegister.setOnAction(event ->{
             if (iAuthenticationController.Register(textUsername.getText(), textPassword.getText())){
-                logic.Connect();
+                logic.Connect(textUsername.getText(), textPassword.getText());
             }
 
         });
         Button btnLogin = new Button("Login");
         btnLogin.setOnAction(event -> {
             if (iAuthenticationController.Login(textUsername.getText(), textPassword.getText())){
-                logic.Connect();
+                logic.Connect(textUsername.getText(), textPassword.getText());
             }
         });
         VBox vboxLogin = new VBox();
@@ -77,7 +77,7 @@ public class QuestionFX extends Application implements IQuestionFX {
             button.setTextAlignment(TextAlignment.CENTER);
             button.setOnAction(event -> {
                 logic.ProcessAnswer(answer);
-                stage.setScene(sceneTest);
+                resultStage(stage);
             });
             answerButtons.add(button);
         }
@@ -91,17 +91,23 @@ public class QuestionFX extends Application implements IQuestionFX {
         vboxQuestionWithAnswers.setAlignment(Pos.TOP_CENTER);
 
         StackPane root = new StackPane();
-        StackPane rootTest = new StackPane();
         root.getChildren().addAll(vboxQuestionWithAnswers);
+        scene = new Scene(root, 600, 250);
+        stage.setTitle("Quiz App");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    void resultStage(Stage stage){
+        StackPane root = new StackPane();
         Button btn = new Button("Proceed");
-        rootTest.getChildren().addAll(btn);
+        root.getChildren().addAll(btn);
         btn.setOnAction(new javafx.event.EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 restart(stage);
             }
         });
         scene = new Scene(root, 600, 250);
-        sceneTest = new Scene(rootTest, 600, 250);
         stage.setTitle("Quiz App");
         stage.setScene(scene);
         stage.show();

@@ -3,10 +3,7 @@ package client;
 import com.google.gson.Gson;
 import frontend.IQuestionFX;
 import frontend.QuestionFX;
-import models.Answer;
-import models.PlayerAnswer;
-import models.PlayerFound;
-import models.Question;
+import models.*;
 import shared.EncapsulatingMessageGenerator;
 import shared.messages.PlayerReadyMessage;
 
@@ -57,14 +54,19 @@ public final class UILogic implements IUILogic, Observer{
         questionFX.updateQuestionUI(question);
     }
 
-    public void Connect(){
-        PlayerReadyMessage msg = new PlayerReadyMessage();
+    public void Connect(String username, String password){
+        Player player = new Player(username,password);
+        PlayerReadyMessage msg = new PlayerReadyMessage(player);
         client.SendMessage(messageGenerator.generateMessageString(msg));
     }
 
     public boolean PlayerFound(){
         playerFound.addObserver(this);
         return playerFound.isPlayerFound();
+    }
+
+    public void setRoundResult(RoundResult roundResult){
+        ;
     }
 
     public static UILogic getInstance(){
