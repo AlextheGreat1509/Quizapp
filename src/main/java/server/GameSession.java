@@ -19,22 +19,31 @@ public class GameSession {
     private ArrayList<Integer> questionsAsked = new ArrayList<Integer>();
     private QuestionRepository questionRepository;
     private ArrayList<Player> players = new ArrayList<Player>();
-    private ArrayList<Session> sessions;
+    private ArrayList<Session> sessions = new ArrayList<>();
     private ArrayList<String> roundSessions = new ArrayList<>();
     private RoundResult roundResult = new RoundResult();
     private final IMessageSender iMessageSender;
     private Map<String, Player> playerSessions = new HashMap<>();
+    private int maxPlayers;
 
-    GameSession(ArrayList<Session> gameSessions){
-        sessions = new ArrayList<>(gameSessions);
+    GameSession(int maxPlayers){
+        this.maxPlayers = maxPlayers;
         questionRepository = new QuestionRepository(new QuestionDatabaseContext());
         iMessageSender = new MessageSender();
-        iMessageSender.setSessions(sessions);
-        PrepareRound();
+    }
+
+    public void addSession(Session session){
+        sessions.add(session);
+        if (sessions.size() >= maxPlayers){
+            iMessageSender.setSessions(sessions);
+        }
     }
 
     public void addPlayerSession(Player player, String sessionId){
         playerSessions.put(sessionId, player);
+        if (playerSessions.size() >= maxPlayers){
+            PrepareRound();
+        }
     }
 
     public Question PrepareRandomQuestion(){
@@ -69,11 +78,15 @@ public class GameSession {
     }
     public void CheckAnswer(PlayerAnswer playerAnswer, String sessionId){
         if (roundSessions.size() != sessions.size()){
+            String currentSessionId = null;
             for (String roundsessionId : roundSessions) {
                 if (!roundsessionId.equals(sessionId)) {
-                    roundResult.addResultToRound(getPlayerFromSessionId(sessionId).getUsername(),playerAnswer.getAnswer().isCorrect());
-                    roundSessions.add(sessionId);
+                    currentSessionId = sessionId;
                 }
+            }
+            if (currentSessionId != null) {
+                roundResult.addResultToRound(getPlayerFromSessionId(sessionId).getUsername(), playerAnswer.getAnswer().isCorrect());
+                roundSessions.add(sessionId);
             }
             if (roundSessions.isEmpty()){
                 roundResult.addResultToRound(getPlayerFromSessionId(sessionId).getUsername(),playerAnswer.getAnswer().isCorrect());
