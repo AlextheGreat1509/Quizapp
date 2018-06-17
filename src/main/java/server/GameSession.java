@@ -2,13 +2,12 @@ package server;
 
 import dbal.databaseContext.QuestionDatabaseContext;
 import dbal.repositories.QuestionRepository;
-import javafx.print.PageLayout;
-import models.*;
-import shared.EncapsulatingMessageGenerator;
-import shared.messages.EncapsulatingMessage;
+import models.Player;
+import models.PlayerAnswer;
+import models.Question;
+import models.RoundResult;
 
 import javax.websocket.Session;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +17,6 @@ public class GameSession {
 
     private ArrayList<Integer> questionsAsked = new ArrayList<Integer>();
     private QuestionRepository questionRepository;
-    private ArrayList<Player> players = new ArrayList<Player>();
     private ArrayList<Session> sessions = new ArrayList<>();
     private ArrayList<String> roundSessions = new ArrayList<>();
     private RoundResult roundResult = new RoundResult();
@@ -42,7 +40,7 @@ public class GameSession {
     public void addPlayerSession(Player player, String sessionId){
         playerSessions.put(sessionId, player);
         if (playerSessions.size() >= maxPlayers){
-            PrepareRound();
+            PrepareFirstRound();
         }
     }
 
@@ -63,12 +61,10 @@ public class GameSession {
         }
     }
 
-    public Round PrepareRound(){
+    public void PrepareFirstRound(){
         Question question = PrepareRandomQuestion();
         roundSessions.clear();
         SendMessageToPlayers(question);
-
-        return new Round(question);
     }
 
     public void SendMessageToPlayers(Object object){
@@ -94,10 +90,22 @@ public class GameSession {
             }
             if (roundSessions.size() == sessions.size()){
                 SendMessageToPlayers(roundResult);
+                prepareNextRound();
             }
         } else {
             SendMessageToPlayers(roundResult);
         }
+    }
+
+    public void prepareNextRound(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Question question = PrepareRandomQuestion();
+        roundSessions.clear();
+        SendMessageToPlayers(question);
     }
 
     public Player getPlayerFromSessionId(String sessionId){

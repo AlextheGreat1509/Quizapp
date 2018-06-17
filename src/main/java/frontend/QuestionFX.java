@@ -107,7 +107,6 @@ public class QuestionFX extends Application implements IQuestionFX {
             Text notFinishText = new Text("Not all players have finished answering");
             root.getChildren().addAll(notFinishText);
         } else {
-            Button btn = new Button("Proceed");
             Text resultHeaderText = new Text("Results: ");
             resultHeaderText.setTextAlignment(TextAlignment.CENTER);
             Set<String> players = roundResult.getRoundresult().keySet();
@@ -120,12 +119,8 @@ public class QuestionFX extends Application implements IQuestionFX {
                 resultHBox.getChildren().addAll(playerText, resultText);
                 resultVBox.getChildren().add(resultHBox);
             }
-            root.getChildren().addAll(resultVBox,btn);
-            btn.setOnAction(new javafx.event.EventHandler<ActionEvent>() {
-                public void handle(ActionEvent event) {
-                    restart(stage);
-                }
-            });
+            resultVBox.setAlignment(Pos.CENTER);
+            root.getChildren().addAll(resultVBox);
         }
         scene = new Scene(root, 600, 250);
         stage.setTitle("Quiz App");
@@ -150,13 +145,6 @@ public class QuestionFX extends Application implements IQuestionFX {
 
     @Override
     public void start(final Stage primaryStage){
-        //logic.Connect();
-        //try {
-        //    TimeUnit.SECONDS.sleep(1);
-        //} catch (InterruptedException e) {
-        //    e.printStackTrace();
-        //}
-        //question = logic.GetQuestion();
         setStage(primaryStage);
         startGame(primaryStage);
 
