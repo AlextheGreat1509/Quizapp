@@ -10,6 +10,6 @@ public class QuestionMessageHandler extends BaseMessageHandler {
     }
 
     public void HandleQuestion(QuestionMessage questionMessage){
-        logic.SetQuestion(questionMessage.getQuestion());
+        logic.setQuestion(questionMessage.getQuestion());
     }
 }

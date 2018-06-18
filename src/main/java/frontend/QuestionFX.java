@@ -51,14 +51,14 @@ public class QuestionFX extends Application implements IQuestionFX {
         Button btnRegister = new Button("Register");
         btnRegister.setOnAction(event ->{
             if (iAuthenticationController.Register(textUsername.getText(), textPassword.getText())){
-                logic.Connect(textUsername.getText(), textPassword.getText());
+                logic.connect(textUsername.getText(), textPassword.getText());
             }
 
         });
         Button btnLogin = new Button("Login");
         btnLogin.setOnAction(event -> {
             if (iAuthenticationController.Login(textUsername.getText(), textPassword.getText())){
-                logic.Connect(textUsername.getText(), textPassword.getText());
+                logic.connect(textUsername.getText(), textPassword.getText());
             }
         });
         VBox vboxLogin = new VBox();
@@ -78,7 +78,7 @@ public class QuestionFX extends Application implements IQuestionFX {
             Button button = new Button(answer.getAnswer());
             button.setTextAlignment(TextAlignment.CENTER);
             button.setOnAction(event -> {
-                logic.ProcessAnswer(answer);
+                logic.processAnswer(answer);
                 goResultStage(stage, null);
             });
             answerButtons.add(button);
