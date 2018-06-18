@@ -20,7 +20,7 @@ public class QuizApiServices {
 
     @POST @Consumes("application/json")
     @Path("/login")
-    public javax.ws.rs.core.Response login(String data){
+    public Response login(String data){
         Reply reply = null;
         Player player = gson.fromJson(data, Player.class);
         reply = new Reply(Status.OK,gson.toJson(iAuthenticator.VerifyLogin(player)));
