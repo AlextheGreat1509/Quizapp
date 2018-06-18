@@ -18,35 +18,21 @@ public class RestClient implements IRestClient {
     Gson gson = new Gson();
 
     public boolean Login(Player player) {
-        String payload = gson.toJson(player);
-        StringEntity entity = new StringEntity(payload,
-                ContentType.APPLICATION_JSON);
-
-        HttpClient httpClient = HttpClientBuilder.create().build();
         HttpPost request = new HttpPost("http://localhost:8090/api/quiz/login");
-        request.setEntity(entity);
-
-        HttpResponse response = null;
-        try {
-            response = httpClient.execute(request);
-            return GetBooleanFromResponse(response);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(response.getStatusLine().getStatusCode() + " " + response.getStatusLine().getReasonPhrase());
-
-
-        return false;
+        return sendAuthenticationRequest(player, request);
     }
 
     public boolean Register(Player player) {
+        HttpPost request = new HttpPost("http://localhost:8090/api/quiz/register");
+        return sendAuthenticationRequest(player, request);
+    }
+
+    private boolean sendAuthenticationRequest(Player player, HttpPost request){
         String payload = gson.toJson(player);
         StringEntity entity = new StringEntity(payload,
                 ContentType.APPLICATION_JSON);
 
         HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpPost request = new HttpPost("http://localhost:8090/api/quiz/register");
         request.setEntity(entity);
 
         HttpResponse response = null;
@@ -61,7 +47,6 @@ public class RestClient implements IRestClient {
 
         return false;
     }
-
     private Boolean GetBooleanFromResponse(HttpResponse response){
         try {
             BufferedReader rd;
