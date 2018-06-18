@@ -3,7 +3,7 @@ package dbal.repositories;
 import dbal.context.IPlayerContext;
 import models.Player;
 
-public class PlayerRepository {
+public class PlayerRepository extends BaseRepository{
     private final IPlayerContext playerContext;
 
     public PlayerRepository(IPlayerContext playerContext) {
