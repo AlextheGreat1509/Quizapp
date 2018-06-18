@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38ddf5bc-bfd6-4903-9d60-2e525749f12e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ClientEndPoint.java" afterPath="$PROJECT_DIR$/src/main/java/client/ClientEndPoint.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java" afterPath="$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/QuestionFX.java" afterPath="$PROJECT_DIR$/src/main/java/frontend/QuestionFX.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/GameSession.java" afterPath="$PROJECT_DIR$/src/main/java/server/GameSession.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dbal/databaseContext/BaseDatabaseContext.java" afterPath="$PROJECT_DIR$/src/main/java/dbal/databaseContext/BaseDatabaseContext.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dbal/databaseContext/PlayerDatabaseContext.java" afterPath="$PROJECT_DIR$/src/main/java/dbal/databaseContext/PlayerDatabaseContext.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dbal/databaseContext/QuestionDatabaseContext.java" afterPath="$PROJECT_DIR$/src/main/java/dbal/databaseContext/QuestionDatabaseContext.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,16 +21,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="GameSession.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/server/GameSession.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MessageToObjectClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/client/MessageToObjectClient.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -51,7 +41,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientEndPoint.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClientEndPoint.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/client/ClientEndPoint.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
@@ -71,6 +61,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="QuestionDatabaseContext.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dbal/databaseContext/QuestionDatabaseContext.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+              <folding>
+                <marker date="1529345405947" expanded="true" signature="784:964" ph="SELECT Quest... Question" />
+                <marker date="1529345405947" expanded="true" signature="2141:2175" ph="Select Max(I... Question" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="IWebSocketClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/client/IWebSocketClient.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -81,40 +84,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebSocket.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/server/WebSocket.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-              <folding>
-                <element signature="e#2353#2354#0" expanded="true" />
-                <element signature="e#2415#2416#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuestionFX.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/frontend/QuestionFX.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="139" column="66" lean-forward="true" selection-start-line="139" selection-start-column="66" selection-end-line="139" selection-end-column="66" />
-              <folding>
-                <element signature="e#6770#6771#0" expanded="true" />
-                <element signature="e#6804#6805#0" expanded="true" />
-                <element signature="e#7603#7604#0" expanded="true" />
-                <element signature="e#7631#7632#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RestClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="45" column="21" lean-forward="true" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+            <state relative-caret-position="693">
+              <caret line="47" column="12" lean-forward="true" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="56" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseDatabaseContext.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dbal/databaseContext/BaseDatabaseContext.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="96" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerDatabaseContext.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dbal/databaseContext/PlayerDatabaseContext.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="441">
+              <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="56" />
+              <folding>
+                <marker date="1529345405911" expanded="true" signature="571:625" ph="INSERT INTO Player... " />
+                <marker date="1529345405911" expanded="true" signature="1459:1536" ph="SELECT Usern... Player" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -156,7 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/shared/messages/RoundResultMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/client/messagehandlers/RoundResultMessageHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/client/messagehandlers/QuestionMessageHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/messagehandlers/PlayerAnswerMessageHandler.java" />
@@ -168,7 +165,6 @@
         <option value="$PROJECT_DIR$/src/main/java/shared/IEncapsulatingMessageGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/shared/EncapsulatingMessageGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/MessageSender.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dbal/databaseContext/BaseDatabaseContext.java" />
         <option value="$PROJECT_DIR$/src/test/java/shared/EncapsulatingMessageGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/shared/messages/QuestionMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/shared/messages/GameResultMessage.java" />
@@ -189,7 +185,6 @@
         <option value="$PROJECT_DIR$/src/test/java/models/RoundTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/models/RoundResultTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/Client/authentication/AuthenticationControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dbal/databaseContext/PlayerDatabaseContext.java" />
         <option value="$PROJECT_DIR$/src/test/java/shared/messages/GameResultMessageTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/shared/messages/PlayerAnswerMessage.java" />
         <option value="$PROJECT_DIR$/src/test/java/shared/messages/PlayerAnswerMessageTest.java" />
@@ -205,8 +200,11 @@
         <option value="$PROJECT_DIR$/src/main/java/client/UILogic.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/GameSession.java" />
         <option value="$PROJECT_DIR$/src/main/java/frontend/QuestionFX.java" />
-        <option value="$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/client/ClientEndPoint.java" />
+        <option value="$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dbal/databaseContext/BaseDatabaseContext.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dbal/databaseContext/PlayerDatabaseContext.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dbal/databaseContext/QuestionDatabaseContext.java" />
       </list>
     </option>
   </component>
@@ -295,6 +293,23 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="messagehandlers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quiz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quiz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dbal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quiz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quiz" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dbal" type="462c0819:PsiDirectoryNode" />
+              <item name="databaseContext" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Quiz" type="b2602c69:ProjectViewProjectNode" />
@@ -670,7 +685,7 @@
       <workItem from="1529171668157" duration="2746000" />
       <workItem from="1529220704721" duration="749000" />
       <workItem from="1529235729814" duration="5539000" />
-      <workItem from="1529308405289" duration="29417000" />
+      <workItem from="1529308405289" duration="29674000" />
     </task>
     <servers />
   </component>
@@ -707,7 +722,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143682000" />
+    <option name="totallyTimeSpent" value="143939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -774,22 +789,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/client/messagehandlers/GameResultMessageHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="12" column="61" lean-forward="false" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/client/authentication/IAuthenticationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/server/QuizServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-334">
@@ -984,17 +983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dbal/databaseContext/PlayerDatabaseContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <marker date="1529340059264" expanded="true" signature="363:417" ph="INSERT INTO Player... " />
-            <marker date="1529340059264" expanded="true" signature="1227:1304" ph="SELECT Usern... Player" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/shared/messages/QuestionMessageTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
@@ -1161,14 +1149,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="45" column="21" lean-forward="true" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/client/authentication/AuthenticationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -1214,6 +1194,44 @@
         <state relative-caret-position="357">
           <caret line="25" column="90" lean-forward="false" selection-start-line="25" selection-start-column="90" selection-end-line="25" selection-end-column="90" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="47" column="12" lean-forward="true" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dbal/databaseContext/BaseDatabaseContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dbal/databaseContext/PlayerDatabaseContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="56" />
+          <folding>
+            <marker date="1529345405911" expanded="true" signature="571:625" ph="INSERT INTO Player... " />
+            <marker date="1529345405911" expanded="true" signature="1459:1536" ph="SELECT Usern... Player" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dbal/databaseContext/QuestionDatabaseContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <marker date="1529345405947" expanded="true" signature="784:964" ph="SELECT Quest... Question" />
+            <marker date="1529345405947" expanded="true" signature="2141:2175" ph="Select Max(I... Question" />
+          </folding>
         </state>
       </provider>
     </entry>

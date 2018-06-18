@@ -1,6 +1,7 @@
 package client.authentication;
 
 import com.google.gson.Gson;
+import javassist.bytecode.stackmap.TypeData;
 import models.Player;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -12,10 +13,13 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RestClient implements IRestClient {
 
     Gson gson = new Gson();
+    private static final Logger LOGGER = Logger.getLogger( TypeData.ClassName.class.getName() );
 
     public boolean Login(Player player) {
         HttpPost request = new HttpPost("http://localhost:8090/api/quiz/login");
@@ -40,7 +44,8 @@ public class RestClient implements IRestClient {
             response = httpClient.execute(request);
             return GetBooleanFromResponse(response);
 
-        } catch (IOException ignored) {
+        } catch (IOException e) {
+            LOGGER.log( Level.SEVERE, e.toString(), e );
         }
 
         return false;
@@ -61,7 +66,8 @@ public class RestClient implements IRestClient {
             System.out.println("Json: " + result.toString());
             return gson.fromJson(result.toString(), Boolean.class);
 
-        } catch (IOException ignored){
+        } catch (IOException e){
+            LOGGER.log( Level.SEVERE, e.toString(), e );
         }
         return false;
     }

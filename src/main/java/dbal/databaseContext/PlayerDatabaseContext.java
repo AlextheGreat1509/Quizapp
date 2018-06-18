@@ -2,9 +2,14 @@ package dbal.databaseContext;
 
 
 import dbal.context.IPlayerContext;
+import javassist.bytecode.stackmap.TypeData;
 import models.Player;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class PlayerDatabaseContext extends BaseDatabaseContext implements IPlayerContext {
+    private static final Logger LOGGER = Logger.getLogger( TypeData.ClassName.class.getName() );
     public boolean Register(Player player){
         try {
             getCon();
@@ -19,7 +24,7 @@ public class PlayerDatabaseContext extends BaseDatabaseContext implements IPlaye
 
         // Handle any errors that may have occurred.
         catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.log( Level.SEVERE, e.toString(), e );
         }
         finally {
             if (rs != null) try { rs.close(); } catch(Exception e) {}
@@ -47,7 +52,7 @@ public class PlayerDatabaseContext extends BaseDatabaseContext implements IPlaye
 
         // Handle any errors that may have occurred.
         catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.log( Level.SEVERE, e.toString(), e );
         }
         finally {
             if (rs != null) try { rs.close(); } catch(Exception e) {}

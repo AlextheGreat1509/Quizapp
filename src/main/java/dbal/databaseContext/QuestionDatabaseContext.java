@@ -2,12 +2,16 @@ package dbal.databaseContext;
 
 
 import dbal.context.IQuestionContext;
+import javassist.bytecode.stackmap.TypeData;
 import models.Answer;
 import models.Question;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class QuestionDatabaseContext extends BaseDatabaseContext implements IQuestionContext {
+    private static final Logger LOGGER = Logger.getLogger( TypeData.ClassName.class.getName() );
 
     public Question GetQuestion(int id){
         Question question = null;
@@ -35,7 +39,7 @@ public class QuestionDatabaseContext extends BaseDatabaseContext implements IQue
 
         // Handle any errors that may have occurred.
         catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.log( Level.SEVERE, e.toString(), e );
         }
         finally {
             if (rs != null) try { rs.close(); } catch(Exception e) {}
@@ -64,7 +68,7 @@ public class QuestionDatabaseContext extends BaseDatabaseContext implements IQue
 
         // Handle any errors that may have occurred.
         catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.log( Level.SEVERE, e.toString(), e );
         }
         finally {
             if (rs != null) try { rs.close(); } catch(Exception e) {}
