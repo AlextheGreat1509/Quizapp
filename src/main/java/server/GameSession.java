@@ -61,11 +61,10 @@ public class GameSession implements IGameSession {
         }
     }
 
-    private boolean PrepareFirstRound(){
+    private void PrepareFirstRound(){
         prepareRound();
         roundSessions.clear();
         SendMessageToPlayers(new QuestionMessage(round.getQuestion()));
-        return true;
     }
 
     private void SendMessageToPlayers(Object object){
@@ -115,17 +114,17 @@ public class GameSession implements IGameSession {
         }
     }
 
-    public void prepareRound(){
+    private void prepareRound(){
         Question question = PrepareRandomQuestion();
         round = new Round(question);
         round.setResult(new RoundResult());
     }
 
-    public boolean checkGameEnd(int maxRounds){
+    private boolean checkGameEnd(int maxRounds){
         return allRounds.size() >= maxRounds;
     }
 
-    public Map<String, Integer> calculateEndResult(){
+    private Map<String, Integer> calculateEndResult(){
         Map<String, Integer> gameresult = new HashMap<>();
         for (Round round: allRounds){
             Set<Map.Entry<String, Boolean>> results = round.getResult().getRoundresult().entrySet();

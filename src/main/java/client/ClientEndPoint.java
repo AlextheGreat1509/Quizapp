@@ -24,7 +24,6 @@ public class ClientEndPoint{
     public void onWebSocketText(String message)
     {
         EncapsulatingMessage encapMsg = gson.fromJson(message,EncapsulatingMessage.class);
-        System.out.println("Received TEXT message: " + encapMsg.getMessageType());
         messageToObjectClient.processMessage(encapMsg.getMessageType(),encapMsg.getMessageData());
     }
 

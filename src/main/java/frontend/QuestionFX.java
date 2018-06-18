@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -46,7 +47,7 @@ public class QuestionFX extends Application implements IQuestionFX {
 
     void startGame(Stage stage){
         TextField textUsername = new TextField("Username");
-        TextField textPassword = new TextField("Password");
+        PasswordField textPassword = new PasswordField();
         Button btnRegister = new Button("Register");
         btnRegister.setOnAction(event ->{
             if (iAuthenticationController.Register(textUsername.getText(), textPassword.getText())){
@@ -112,7 +113,12 @@ public class QuestionFX extends Application implements IQuestionFX {
             resultVBox.getChildren().addAll(resultHeaderText);
             for (String player : players) {
                 Text playerText = new Text(player);
-                Text resultText = new Text(roundResult.getRoundresult().get(player).toString());
+                Text resultText;
+                if (roundResult.getRoundresult().get(player)) {
+                    resultText = new Text(" answered correctly");
+                }else {
+                    resultText = new Text(" answered incorrectly");
+                }
                 HBox resultHBox = new HBox();
                 resultHBox.getChildren().addAll(playerText, resultText);
                 resultHBox.setAlignment(Pos.CENTER);
@@ -136,7 +142,7 @@ public class QuestionFX extends Application implements IQuestionFX {
             resultVBox.getChildren().addAll(resultHeaderText);
             for (String player : players) {
                 Text playerText = new Text(player);
-                Text resultText = new Text(gameResult.getResult().get(player).toString());
+                Text resultText = new Text(" has answered " + gameResult.getResult().get(player).toString() + " questions correctly this game");
                 HBox resultHBox = new HBox();
                 resultHBox.getChildren().addAll(playerText, resultText);
                 resultHBox.setAlignment(Pos.CENTER);

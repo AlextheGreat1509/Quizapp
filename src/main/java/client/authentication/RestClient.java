@@ -40,10 +40,8 @@ public class RestClient implements IRestClient {
             response = httpClient.execute(request);
             return GetBooleanFromResponse(response);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
         }
-        System.out.println(response.getStatusLine().getStatusCode() + " " + response.getStatusLine().getReasonPhrase());
 
         return false;
     }
@@ -63,8 +61,7 @@ public class RestClient implements IRestClient {
             System.out.println("Json: " + result.toString());
             return gson.fromJson(result.toString(), Boolean.class);
 
-        } catch (IOException e){
-            e.printStackTrace();
+        } catch (IOException ignored){
         }
         return false;
     }
