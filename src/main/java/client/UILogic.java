@@ -5,6 +5,7 @@ import frontend.IQuestionFX;
 import frontend.QuestionFX;
 import models.*;
 import shared.EncapsulatingMessageGenerator;
+import shared.IEncapsulatingMessageGenerator;
 import shared.messages.PlayerAnswerMessage;
 import shared.messages.PlayerReadyMessage;
 
@@ -15,7 +16,7 @@ import java.util.Set;
 public final class UILogic implements IUILogic, Observer{
     private IWebSocketClient client;
     private Gson gson = new Gson();
-    private EncapsulatingMessageGenerator messageGenerator = new EncapsulatingMessageGenerator();
+    private IEncapsulatingMessageGenerator messageGenerator;
     boolean useServer = true;
     private Question question;
     PlayerFound playerFound = new PlayerFound();
@@ -25,6 +26,7 @@ public final class UILogic implements IUILogic, Observer{
 
     private UILogic() {
         client = new WebSocketClient();
+        messageGenerator = new EncapsulatingMessageGenerator();
     }
 
     public void setUI(QuestionFX questionFX){

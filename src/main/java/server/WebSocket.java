@@ -2,6 +2,7 @@ package server;
 
 import com.google.gson.Gson;
 import shared.EncapsulatingMessageGenerator;
+import shared.IEncapsulatingMessageGenerator;
 import shared.messages.EncapsulatingMessage;
 
 import javax.websocket.ClientEndpoint;
@@ -22,7 +23,7 @@ public class WebSocket implements IWebSocket{
     private Gson gson = new Gson();
     private GameSessionManager gameSessionManager;
     private MessageToObjectServer messageToObjectServer;
-    private EncapsulatingMessageGenerator messageGenerator;
+    private IEncapsulatingMessageGenerator messageGenerator;
 
     public WebSocket() {
         messageGenerator = new EncapsulatingMessageGenerator();

@@ -3,7 +3,7 @@ package shared;
 import com.google.gson.Gson;
 import shared.messages.EncapsulatingMessage;
 
-public class EncapsulatingMessageGenerator {
+public class EncapsulatingMessageGenerator implements IEncapsulatingMessageGenerator{
 
     private Gson gson = new Gson();
 

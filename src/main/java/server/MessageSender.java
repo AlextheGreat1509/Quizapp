@@ -1,13 +1,14 @@
 package server;
 
 import shared.EncapsulatingMessageGenerator;
+import shared.IEncapsulatingMessageGenerator;
 
 import javax.websocket.Session;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class MessageSender implements  IMessageSender{
-    private EncapsulatingMessageGenerator messageGenerator;
+    private IEncapsulatingMessageGenerator messageGenerator;
     private static ArrayList<Session> sessions = new ArrayList<>();
 
     public MessageSender() {

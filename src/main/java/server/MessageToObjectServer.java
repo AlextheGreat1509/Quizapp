@@ -14,7 +14,7 @@ public class MessageToObjectServer {
     public void processMessage(String sessionId, String type, String data, GameSessionManager gameSessionManager) {
         //Get the last part from the full package and type name
         String simpleType = type.split("\\.")[type.split("\\.").length - 1];
-        GameSession game = gameSessionManager.getGameSessionBySession(sessionId);
+        IGameSession game = gameSessionManager.getGameSessionBySession(sessionId);
 
         switch(simpleType)
         {

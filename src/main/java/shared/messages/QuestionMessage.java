@@ -2,7 +2,7 @@ package shared.messages;
 
 import models.Question;
 
-public class QuestionMessage {
+public class QuestionMessage extends BaseMessage{
     private Question question;
 
 

@@ -4,7 +4,7 @@ import models.GameResult;
 
 import java.util.Map;
 
-public class GameResultMessage {
+public class GameResultMessage extends BaseMessage{
     private GameResult gameResult = new GameResult();
 
     public GameResultMessage(Map<String, Integer> gameResult) {

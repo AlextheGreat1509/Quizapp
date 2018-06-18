@@ -2,11 +2,12 @@ package server.messagehandlers;
 
 import models.PlayerAnswer;
 import server.GameSession;
+import server.IGameSession;
 import shared.messages.PlayerAnswerMessage;
 
 public class PlayerAnswerMessageHandler extends BaseMessageHandler{
 
-    public PlayerAnswerMessageHandler(GameSession game, String sessionId){
+    public PlayerAnswerMessageHandler(IGameSession game, String sessionId){
         super(game, sessionId);
     }
 

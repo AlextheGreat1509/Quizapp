@@ -10,7 +10,7 @@ import shared.messages.RoundResultMessage;
 import javax.websocket.Session;
 import java.util.*;
 
-public class GameSession {
+public class GameSession implements IGameSession {
 
     private ArrayList<Integer> questionsAsked = new ArrayList<Integer>();
     private QuestionRepository questionRepository;
@@ -28,18 +28,20 @@ public class GameSession {
         iMessageSender = new MessageSender();
     }
 
-    public void addSession(Session session){
+    public boolean addSession(Session session){
         sessions.add(session);
         if (sessions.size() >= maxPlayers){
             iMessageSender.setSessions(sessions);
         }
+        return true;
     }
 
-    public void addPlayerSession(Player player, String sessionId){
+    public boolean addPlayerSession(Player player, String sessionId){
         playerSessions.put(sessionId, player);
         if (playerSessions.size() >= maxPlayers){
             PrepareFirstRound();
         }
+        return true;
     }
 
     public Question PrepareRandomQuestion(){
@@ -59,10 +61,11 @@ public class GameSession {
         }
     }
 
-    private void PrepareFirstRound(){
+    private boolean PrepareFirstRound(){
         prepareRound();
         roundSessions.clear();
         SendMessageToPlayers(new QuestionMessage(round.getQuestion()));
+        return true;
     }
 
     private void SendMessageToPlayers(Object object){
@@ -111,13 +114,13 @@ public class GameSession {
         }
     }
 
-    private void prepareRound(){
+    public void prepareRound(){
         Question question = PrepareRandomQuestion();
         round = new Round(question);
         round.setResult(new RoundResult());
     }
 
-    private boolean checkGameEnd(int maxRounds){
+    public boolean checkGameEnd(int maxRounds){
         return allRounds.size() >= maxRounds;
     }
 
