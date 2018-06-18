@@ -14,7 +14,6 @@ public class GameSessionTest {
 
     @DataPoints
     public GameSession GetGameSession(){
-        ArrayList<Session> sessions = new ArrayList<Session>();
         return new GameSession(2);
     }
 

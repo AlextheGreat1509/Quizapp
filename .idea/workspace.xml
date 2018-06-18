@@ -2,42 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38ddf5bc-bfd6-4903-9d60-2e525749f12e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mindrot_jbcrypt_0_4.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/client/messagehandlers/GameResultMessageHandler.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/models/GameResult.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/shared/messages/GameResultMessage.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/shared/messages/QuestionMessage.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Quiz.iml" afterPath="$PROJECT_DIR$/Quiz.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/IUILogic.java" afterPath="$PROJECT_DIR$/src/main/java/client/IUILogic.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/MessageToObjectClient.java" afterPath="$PROJECT_DIR$/src/main/java/client/MessageToObjectClient.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/UILogic.java" afterPath="$PROJECT_DIR$/src/main/java/client/UILogic.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java" afterPath="$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/messagehandlers/QuestionMessageHandler.java" afterPath="$PROJECT_DIR$/src/main/java/client/messagehandlers/QuestionMessageHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/messagehandlers/RoundResultMessageHandler.java" afterPath="$PROJECT_DIR$/src/main/java/client/messagehandlers/RoundResultMessageHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/IQuestionFX.java" afterPath="$PROJECT_DIR$/src/main/java/frontend/IQuestionFX.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/QuestionFX.java" afterPath="$PROJECT_DIR$/src/main/java/frontend/QuestionFX.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Player.java" afterPath="$PROJECT_DIR$/src/main/java/models/Player.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Round.java" afterPath="$PROJECT_DIR$/src/main/java/models/Round.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/GameSession.java" afterPath="$PROJECT_DIR$/src/main/java/server/GameSession.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/MessageToObjectServer.java" afterPath="$PROJECT_DIR$/src/main/java/server/MessageToObjectServer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/messagehandlers/PlayerAnswerMessageHandler.java" afterPath="$PROJECT_DIR$/src/main/java/server/messagehandlers/PlayerAnswerMessageHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/shared/messages/RoundResultMessage.java" afterPath="$PROJECT_DIR$/src/main/java/shared/messages/RoundResultMessage.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/client/IUILogic.class" afterPath="$PROJECT_DIR$/target/classes/client/IUILogic.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/client/MessageToObjectClient.class" afterPath="$PROJECT_DIR$/target/classes/client/MessageToObjectClient.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/client/UILogic.class" afterPath="$PROJECT_DIR$/target/classes/client/UILogic.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/client/messagehandlers/QuestionMessageHandler.class" afterPath="$PROJECT_DIR$/target/classes/client/messagehandlers/QuestionMessageHandler.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/client/messagehandlers/RoundResultMessageHandler.class" afterPath="$PROJECT_DIR$/target/classes/client/messagehandlers/RoundResultMessageHandler.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/IQuestionFX.class" afterPath="$PROJECT_DIR$/target/classes/frontend/IQuestionFX.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/QuestionFX$1.class" afterPath="$PROJECT_DIR$/target/classes/frontend/QuestionFX$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/QuestionFX$2.class" afterPath="$PROJECT_DIR$/target/classes/frontend/QuestionFX$2.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/QuestionFX.class" afterPath="$PROJECT_DIR$/target/classes/frontend/QuestionFX.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Round.class" afterPath="$PROJECT_DIR$/target/classes/models/Round.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/GameSession.class" afterPath="$PROJECT_DIR$/target/classes/server/GameSession.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/MessageToObjectServer.class" afterPath="$PROJECT_DIR$/target/classes/server/MessageToObjectServer.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/messagehandlers/PlayerAnswerMessageHandler.class" afterPath="$PROJECT_DIR$/target/classes/server/messagehandlers/PlayerAnswerMessageHandler.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/shared/messages/RoundResultMessage.class" afterPath="$PROJECT_DIR$/target/classes/shared/messages/RoundResultMessage.class" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/shared/MessageGenerator.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/GameSessionTest.java" afterPath="$PROJECT_DIR$/src/test/java/server/GameSessionTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -91,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RestClient.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RestClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="75" column="23" lean-forward="true" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
+            <state relative-caret-position="231">
+              <caret line="74" column="13" lean-forward="true" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -119,19 +86,6 @@
               <folding>
                 <element signature="e#172#173#0" expanded="true" />
                 <element signature="e#212#213#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UILogic.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/client/UILogic.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="70" column="45" lean-forward="false" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="45" />
-              <folding>
-                <element signature="e#2319#2320#0" expanded="true" />
-                <element signature="e#2376#2377#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -172,6 +126,18 @@
               <folding>
                 <element signature="e#388#389#0" expanded="true" />
                 <element signature="e#438#439#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameSessionTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/server/GameSessionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="83">
+              <caret line="15" column="40" lean-forward="false" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+              <folding>
+                <element signature="e#380#381#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -234,7 +200,6 @@
         <option value="$PROJECT_DIR$/src/main/java/server/WebSocket.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/RoundResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/GameSessionManager.java" />
-        <option value="$PROJECT_DIR$/src/test/java/server/GameSessionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/shared/messages/RoundResultMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/client/messagehandlers/RoundResultMessageHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/shared/messages/QuestionMessage.java" />
@@ -254,6 +219,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/models/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java" />
+        <option value="$PROJECT_DIR$/src/test/java/server/GameSessionTest.java" />
       </list>
     </option>
   </component>
@@ -514,32 +480,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.QuestionFX">
+  <component name="RunManager" selected="JUnit.GameSessionTest.getRandomQuestionTest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
-    </configuration>
-    <configuration name="DummyDatabaseAccess" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="dbal.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="dbal.DummyDatabaseAccess" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Quiz" />
-      <envs />
     </configuration>
     <configuration name="QuestionFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
@@ -637,6 +584,31 @@
       <envs />
       <patterns />
     </configuration>
+    <configuration name="GameSessionTest.getRandomQuestionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Quiz" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="server" />
+      <option name="MAIN_CLASS_NAME" value="server.GameSessionTest" />
+      <option name="METHOD_NAME" value="getRandomQuestionTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -698,19 +670,19 @@
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.DummyDatabaseAccess" />
-      <item index="1" class="java.lang.String" itemvalue="Application.QuestionFX" />
-      <item index="2" class="java.lang.String" itemvalue="Application.QuizServer" />
-      <item index="3" class="java.lang.String" itemvalue="Application.WebSocketClient" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.GameSessionTest" />
+      <item index="0" class="java.lang.String" itemvalue="Application.QuestionFX" />
+      <item index="1" class="java.lang.String" itemvalue="Application.QuizServer" />
+      <item index="2" class="java.lang.String" itemvalue="Application.WebSocketClient" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.GameSessionTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.GameSessionTest.getRandomQuestionTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.QuestionFX" />
-        <item index="1" class="java.lang.String" itemvalue="Application.QuizServer" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.GameSessionTest" />
-        <item index="3" class="java.lang.String" itemvalue="Application.WebSocketClient" />
-        <item index="4" class="java.lang.String" itemvalue="Application.DummyDatabaseAccess" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.GameSessionTest.getRandomQuestionTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.QuestionFX" />
+        <item index="2" class="java.lang.String" itemvalue="Application.QuizServer" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.GameSessionTest" />
+        <item index="4" class="java.lang.String" itemvalue="Application.WebSocketClient" />
       </list>
     </recent_temporary>
   </component>
@@ -762,7 +734,7 @@
       <workItem from="1529171668157" duration="2746000" />
       <workItem from="1529220704721" duration="749000" />
       <workItem from="1529235729814" duration="5539000" />
-      <workItem from="1529308405289" duration="10716000" />
+      <workItem from="1529308405289" duration="11179000" />
     </task>
     <servers />
   </component>
@@ -770,9 +742,12 @@
     <history-entry file="GameSessionTest - 2018.05.30 at 09h 59m 12s.xml">
       <configuration name="GameSessionTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="GameSessionTest_getRandomQuestionTest - 2018.06.18 at 13h 56m 41s.xml">
+      <configuration name="GameSessionTest.getRandomQuestionTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124981000" />
+    <option name="totallyTimeSpent" value="125444000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -788,7 +763,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.50416666" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33370167" sideWeight="0.49583334" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33370167" sideWeight="0.49583334" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -846,13 +821,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/websocket/websocket-common/9.2.7.v20150116/websocket-common-9.2.7.v20150116.jar!/org/eclipse/jetty/websocket/common/Parser.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="190" column="0" lean-forward="false" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/websocket/websocket-common/9.2.7.v20150116/websocket-common-9.2.7.v20150116.jar!/org/eclipse/jetty/websocket/common/io/AbstractWebSocketConnection.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -972,14 +940,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/server/GameSessionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="17" column="32" lean-forward="false" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1298,11 +1258,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/shared/MessageGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="75" column="23" lean-forward="true" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
+        <state relative-caret-position="231">
+          <caret line="74" column="13" lean-forward="true" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/server/GameSessionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="15" column="40" lean-forward="false" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+          <folding>
+            <element signature="e#380#381#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
