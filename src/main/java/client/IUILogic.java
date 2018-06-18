@@ -2,6 +2,7 @@ package client;
 
 import frontend.QuestionFX;
 import models.Answer;
+import models.GameResult;
 import models.Question;
 import models.RoundResult;
 
@@ -13,4 +14,5 @@ public interface IUILogic {
     boolean PlayerFound();
     void setUI(QuestionFX questionFX);
     void setRoundResult(RoundResult roundResult);
+    void setGameResult(GameResult gameResult);
 }

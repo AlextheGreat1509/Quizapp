@@ -2,16 +2,13 @@ package server;
 
 import dbal.databaseContext.QuestionDatabaseContext;
 import dbal.repositories.QuestionRepository;
-import models.Player;
-import models.PlayerAnswer;
-import models.Question;
-import models.RoundResult;
+import models.*;
+import shared.messages.GameResultMessage;
+import shared.messages.QuestionMessage;
+import shared.messages.RoundResultMessage;
 
 import javax.websocket.Session;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class GameSession {
 
@@ -19,10 +16,11 @@ public class GameSession {
     private QuestionRepository questionRepository;
     private ArrayList<Session> sessions = new ArrayList<>();
     private ArrayList<String> roundSessions = new ArrayList<>();
-    private RoundResult roundResult = new RoundResult();
+    private ArrayList<Round> allRounds = new ArrayList<>();
     private final IMessageSender iMessageSender;
     private Map<String, Player> playerSessions = new HashMap<>();
     private int maxPlayers;
+    private Round round;
 
     GameSession(int maxPlayers){
         this.maxPlayers = maxPlayers;
@@ -61,18 +59,18 @@ public class GameSession {
         }
     }
 
-    public void PrepareFirstRound(){
-        Question question = PrepareRandomQuestion();
+    private void PrepareFirstRound(){
+        prepareRound();
         roundSessions.clear();
-        SendMessageToPlayers(question);
+        SendMessageToPlayers(new QuestionMessage(round.getQuestion()));
     }
 
-    public void SendMessageToPlayers(Object object){
+    private void SendMessageToPlayers(Object object){
         for (Session session : sessions) {
                 iMessageSender.sendTo(session.getId(), object);
         }
     }
-    public void CheckAnswer(PlayerAnswer playerAnswer, String sessionId){
+    public void CheckAnswer(Answer answer, String sessionId){
         if (roundSessions.size() != sessions.size()){
             String currentSessionId = null;
             for (String roundsessionId : roundSessions) {
@@ -81,34 +79,71 @@ public class GameSession {
                 }
             }
             if (currentSessionId != null) {
-                roundResult.addResultToRound(getPlayerFromSessionId(sessionId).getUsername(), playerAnswer.getAnswer().isCorrect());
+                round.getResult().addResultToRound(getPlayerFromSessionId(sessionId).getUsername(), answer.isCorrect());
                 roundSessions.add(sessionId);
             }
             if (roundSessions.isEmpty()){
-                roundResult.addResultToRound(getPlayerFromSessionId(sessionId).getUsername(),playerAnswer.getAnswer().isCorrect());
+                round.getResult().addResultToRound(getPlayerFromSessionId(sessionId).getUsername(), answer.isCorrect());
                 roundSessions.add(sessionId);
             }
             if (roundSessions.size() == sessions.size()){
-                SendMessageToPlayers(roundResult);
+                SendMessageToPlayers(new RoundResultMessage(round.getResult()));
                 prepareNextRound();
             }
         } else {
-            SendMessageToPlayers(roundResult);
+            SendMessageToPlayers(new RoundResultMessage(round.getResult()));
         }
     }
 
-    public void prepareNextRound(){
+    private void prepareNextRound(){
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Question question = PrepareRandomQuestion();
-        roundSessions.clear();
-        SendMessageToPlayers(question);
+        allRounds.add(round);
+        if (checkGameEnd(2)){
+            SendMessageToPlayers(new GameResultMessage(calculateEndResult()));
+        } else {
+            prepareRound();
+            roundSessions.clear();
+            SendMessageToPlayers(new QuestionMessage(round.getQuestion()));
+        }
     }
 
-    public Player getPlayerFromSessionId(String sessionId){
+    private void prepareRound(){
+        Question question = PrepareRandomQuestion();
+        round = new Round(question);
+        round.setResult(new RoundResult());
+    }
+
+    private boolean checkGameEnd(int maxRounds){
+        return allRounds.size() >= maxRounds;
+    }
+
+    public Map<String, Integer> calculateEndResult(){
+        Map<String, Integer> gameresult = new HashMap<>();
+        for (Round round: allRounds){
+            Set<Map.Entry<String, Boolean>> results = round.getResult().getRoundresult().entrySet();
+            for (Map.Entry<String, Boolean> playerresult : results){
+                String player = playerresult.getKey();
+                boolean correct = playerresult.getValue();
+                if (correct) {
+                    if (gameresult.containsKey(player)) {
+                        int amountCorrect = 1 + gameresult.get(player);
+                        gameresult.replace(player, amountCorrect);
+                    } else {
+                        gameresult.put(player, 1);
+                    }
+                }
+                if (!gameresult.containsKey(player)){
+                    gameresult.put(player, 0);
+                }
+            }
+        }
+        return gameresult;
+    }
+    private Player getPlayerFromSessionId(String sessionId){
         return playerSessions.get(sessionId);
     }
 }

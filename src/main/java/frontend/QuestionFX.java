@@ -17,10 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import models.Answer;
-import models.PlayerFound;
-import models.Question;
-import models.RoundResult;
+import models.*;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -117,11 +114,35 @@ public class QuestionFX extends Application implements IQuestionFX {
                 Text resultText = new Text(roundResult.getRoundresult().get(player).toString());
                 HBox resultHBox = new HBox();
                 resultHBox.getChildren().addAll(playerText, resultText);
+                resultHBox.setAlignment(Pos.CENTER);
                 resultVBox.getChildren().add(resultHBox);
             }
             resultVBox.setAlignment(Pos.CENTER);
             root.getChildren().addAll(resultVBox);
         }
+        scene = new Scene(root, 600, 250);
+        stage.setTitle("Quiz App");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    void gameResultStage(Stage stage, GameResult gameResult){
+        StackPane root = new StackPane();
+            Text resultHeaderText = new Text("Amount of questions correct: ");
+            resultHeaderText.setTextAlignment(TextAlignment.CENTER);
+            Set<String> players = gameResult.getResult().keySet();
+            VBox resultVBox = new VBox();
+            resultVBox.getChildren().addAll(resultHeaderText);
+            for (String player : players) {
+                Text playerText = new Text(player);
+                Text resultText = new Text(gameResult.getResult().get(player).toString());
+                HBox resultHBox = new HBox();
+                resultHBox.getChildren().addAll(playerText, resultText);
+                resultHBox.setAlignment(Pos.CENTER);
+                resultVBox.getChildren().add(resultHBox);
+            }
+            resultVBox.setAlignment(Pos.CENTER);
+            root.getChildren().addAll(resultVBox);
         scene = new Scene(root, 600, 250);
         stage.setTitle("Quiz App");
         stage.setScene(scene);
@@ -141,6 +162,11 @@ public class QuestionFX extends Application implements IQuestionFX {
     void goResultStage(Stage stage, RoundResult roundResult) {
         cleanup();
         resultStage(stage, roundResult);
+    }
+
+    void goGameResultStage(Stage stage, GameResult gameResult) {
+        cleanup();
+        gameResultStage(stage, gameResult);
     }
 
     @Override
@@ -169,6 +195,16 @@ public class QuestionFX extends Application implements IQuestionFX {
             @Override
             public void run() {
                 goResultStage(stage, roundResult);
+            }
+        });
+    }
+
+    @Override
+    public void updateGameResultUI(GameResult gameResult) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                goGameResultStage(stage, gameResult);
             }
         });
     }

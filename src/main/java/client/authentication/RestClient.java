@@ -73,6 +73,7 @@ public class RestClient implements IRestClient {
             while ((line = rd.readLine()) != null) {
                 result.append(line);
             }
+            rd.close();
             System.out.println("Json: " + result.toString());
             return gson.fromJson(result.toString(), Boolean.class);
 

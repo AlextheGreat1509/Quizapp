@@ -5,6 +5,7 @@ import frontend.IQuestionFX;
 import frontend.QuestionFX;
 import models.*;
 import shared.EncapsulatingMessageGenerator;
+import shared.messages.PlayerAnswerMessage;
 import shared.messages.PlayerReadyMessage;
 
 import java.util.ArrayList;
@@ -45,9 +46,7 @@ public final class UILogic implements IUILogic, Observer{
     }
 
     public void ProcessAnswer(Answer answer){
-        PlayerAnswer playerAnswer = new PlayerAnswer(answer);
-        client.SendMessage(messageGenerator.generateMessageString(playerAnswer));
-        System.out.println(playerAnswer.getAnswer().getAnswer() + " " + playerAnswer.getAnswer().isCorrect());
+        client.SendMessage(messageGenerator.generateMessageString(new PlayerAnswerMessage(answer)));
     }
 
     public void SetQuestion(Question question) {
@@ -57,8 +56,7 @@ public final class UILogic implements IUILogic, Observer{
 
     public void Connect(String username, String password){
         Player player = new Player(username,password);
-        PlayerReadyMessage msg = new PlayerReadyMessage(player);
-        client.SendMessage(messageGenerator.generateMessageString(msg));
+        client.SendMessage(messageGenerator.generateMessageString(new PlayerReadyMessage(player)));
     }
 
     public boolean PlayerFound(){
@@ -68,6 +66,10 @@ public final class UILogic implements IUILogic, Observer{
 
     public void setRoundResult(RoundResult roundResult){
         questionFX.updateResultUI(roundResult);
+    }
+
+    public void setGameResult(GameResult gameResult){
+        questionFX.updateGameResultUI(gameResult);
     }
 
     public static UILogic getInstance(){

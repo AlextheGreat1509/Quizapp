@@ -2,6 +2,7 @@ package server.messagehandlers;
 
 import models.PlayerAnswer;
 import server.GameSession;
+import shared.messages.PlayerAnswerMessage;
 
 public class PlayerAnswerMessageHandler extends BaseMessageHandler{
 
@@ -9,7 +10,7 @@ public class PlayerAnswerMessageHandler extends BaseMessageHandler{
         super(game, sessionId);
     }
 
-    public void HandlePlayerAnswer(PlayerAnswer playerAnswer) {
-        game.CheckAnswer(playerAnswer, sessionId);
+    public void HandlePlayerAnswer(PlayerAnswerMessage playerAnswerMessage) {
+        game.CheckAnswer(playerAnswerMessage.getAnswer(), sessionId);
     }
 }

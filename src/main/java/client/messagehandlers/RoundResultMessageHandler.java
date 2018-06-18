@@ -3,6 +3,7 @@ package client.messagehandlers;
 import client.IUILogic;
 import models.Question;
 import models.RoundResult;
+import shared.messages.RoundResultMessage;
 
 public class RoundResultMessageHandler extends BaseMessageHandler {
 
@@ -10,7 +11,7 @@ public class RoundResultMessageHandler extends BaseMessageHandler {
         super(logic);
     }
 
-    public void HandleRoundResult(RoundResult roundResult){
-        logic.setRoundResult(roundResult);
+    public void HandleRoundResult(RoundResultMessage roundResultMessage){
+        logic.setRoundResult(roundResultMessage.getRoundResult());
     }
 }

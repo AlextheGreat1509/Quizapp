@@ -1,10 +1,14 @@
 package client;
 
+import client.messagehandlers.GameResultMessageHandler;
 import client.messagehandlers.QuestionMessageHandler;
 import client.messagehandlers.RoundResultMessageHandler;
 import com.google.gson.Gson;
 import models.Question;
 import models.RoundResult;
+import shared.messages.GameResultMessage;
+import shared.messages.QuestionMessage;
+import shared.messages.RoundResultMessage;
 
 public class MessageToObjectClient {
     private Gson gson = new Gson();
@@ -16,18 +20,19 @@ public class MessageToObjectClient {
 
         switch(simpleType)
         {
-            case "Question":
+            case "QuestionMessage":
                 System.out.println("question model");
                 QuestionMessageHandler questionMessageHandler = new QuestionMessageHandler(logic);
-                questionMessageHandler.HandleQuestion(gson.fromJson(data, Question.class));
+                questionMessageHandler.HandleQuestion(gson.fromJson(data, QuestionMessage.class));
                 break;
-            case "Answer":
-                System.out.println(data);
+            case "GameResultMessage":
+                GameResultMessageHandler gameResultMessageHandler = new GameResultMessageHandler(logic);
+                gameResultMessageHandler.HandleGameResult(gson.fromJson(data, GameResultMessage.class));
                 break;
-            case "RoundResult":
+            case "RoundResultMessage":
                 System.out.println("Roundresult received");
                 RoundResultMessageHandler roundResultMessageHandler = new RoundResultMessageHandler(logic);
-                roundResultMessageHandler.HandleRoundResult(gson.fromJson(data, RoundResult.class));
+                roundResultMessageHandler.HandleRoundResult(gson.fromJson(data, RoundResultMessage.class));
             default:
         }
     }

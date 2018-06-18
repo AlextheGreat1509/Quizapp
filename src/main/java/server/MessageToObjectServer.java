@@ -5,6 +5,7 @@ import models.Answer;
 import models.PlayerAnswer;
 import server.messagehandlers.PlayerAnswerMessageHandler;
 import server.messagehandlers.PlayerReadyMessageHandler;
+import shared.messages.PlayerAnswerMessage;
 import shared.messages.PlayerReadyMessage;
 
 public class MessageToObjectServer {
@@ -17,9 +18,9 @@ public class MessageToObjectServer {
 
         switch(simpleType)
         {
-            case "PlayerAnswer":
+            case "PlayerAnswerMessage":
                 PlayerAnswerMessageHandler playerAnswerMessageHandler = new PlayerAnswerMessageHandler(game, sessionId);
-                playerAnswerMessageHandler.HandlePlayerAnswer(gson.fromJson(data, PlayerAnswer.class));
+                playerAnswerMessageHandler.HandlePlayerAnswer(gson.fromJson(data, PlayerAnswerMessage.class));
                 break;
             case "PlayerReadyMessage":
                 PlayerReadyMessageHandler playerReadyMessageHandler = new PlayerReadyMessageHandler(game, sessionId);

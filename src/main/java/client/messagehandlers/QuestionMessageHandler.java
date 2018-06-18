@@ -2,6 +2,7 @@ package client.messagehandlers;
 
 import client.IUILogic;
 import models.Question;
+import shared.messages.QuestionMessage;
 
 public class QuestionMessageHandler extends BaseMessageHandler {
 
@@ -9,7 +10,7 @@ public class QuestionMessageHandler extends BaseMessageHandler {
         super(logic);
     }
 
-    public void HandleQuestion(Question question){
-        logic.SetQuestion(question);
+    public void HandleQuestion(QuestionMessage questionMessage){
+        logic.SetQuestion(questionMessage.getQuestion());
     }
 }
