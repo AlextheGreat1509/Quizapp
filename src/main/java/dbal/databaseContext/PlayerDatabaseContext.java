@@ -14,7 +14,7 @@ public class PlayerDatabaseContext extends BaseDatabaseContext implements IPlaye
             stmt = con.prepareStatement(SQL);
             stmt.setString(1, player.getUsername());
             stmt.setString(2, player.getPassword());
-            rs = stmt.executeQuery();
+            stmt.executeQuery();
         }
 
         // Handle any errors that may have occurred.
