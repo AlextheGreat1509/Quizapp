@@ -20,16 +20,12 @@ public class PlayerDatabaseContext extends BaseDatabaseContext implements IPlaye
             stmt.setString(1, player.getUsername());
             stmt.setString(2, player.getPassword());
             stmt.executeQuery();
+            closeConnection();
         }
 
         // Handle any errors that may have occurred.
         catch (Exception e) {
             LOGGER.log( Level.SEVERE, e.toString(), e );
-        }
-        finally {
-            if (rs != null) try { rs.close(); } catch(Exception e) {}
-            if (stmt != null) try { stmt.close(); } catch(Exception e) {}
-            if (con != null) try { con.close(); } catch(Exception e) {}
         }
         return true;
     }
@@ -47,17 +43,13 @@ public class PlayerDatabaseContext extends BaseDatabaseContext implements IPlaye
             rs = stmt.executeQuery();
 
             exists = rs.next();
+            closeConnection();
             return exists;
         }
 
         // Handle any errors that may have occurred.
         catch (Exception e) {
             LOGGER.log( Level.SEVERE, e.toString(), e );
-        }
-        finally {
-            if (rs != null) try { rs.close(); } catch(Exception e) {}
-            if (stmt != null) try { stmt.close(); } catch(Exception e) {}
-            if (con != null) try { con.close(); } catch(Exception e) {}
         }
         return exists;
     }

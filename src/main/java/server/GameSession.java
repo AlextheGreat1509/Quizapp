@@ -2,6 +2,7 @@ package server;
 
 import dbal.databaseContext.QuestionDatabaseContext;
 import dbal.repositories.QuestionRepository;
+import javassist.bytecode.stackmap.TypeData;
 import models.*;
 import shared.messages.GameResultMessage;
 import shared.messages.QuestionMessage;
@@ -9,9 +10,11 @@ import shared.messages.RoundResultMessage;
 
 import javax.websocket.Session;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GameSession implements IGameSession {
-
+    private static final Logger LOGGER = Logger.getLogger( TypeData.ClassName.class.getName() );
     private ArrayList<Integer> questionsAsked = new ArrayList<Integer>();
     private QuestionRepository questionRepository;
     private ArrayList<Session> sessions = new ArrayList<>();
@@ -101,7 +104,7 @@ public class GameSession implements IGameSession {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            LOGGER.log( Level.SEVERE, e.toString(), e );
             Thread.currentThread().interrupt();
         }
         allRounds.add(round);

@@ -30,4 +30,10 @@ public abstract class BaseDatabaseContext {
         }
         return con;
     }
+
+    public void closeConnection(){
+        if (rs != null) try { rs.close(); } catch(Exception e) {}
+        if (stmt != null) try { stmt.close(); } catch(Exception e) {}
+        if (con != null) try { con.close(); } catch(Exception e) {}
+    }
 }
