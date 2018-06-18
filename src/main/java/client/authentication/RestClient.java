@@ -50,8 +50,8 @@ public class RestClient implements IRestClient {
     private Boolean GetBooleanFromResponse(HttpResponse response){
         try {
             BufferedReader rd;
-            rd = new BufferedReader(
-                    new InputStreamReader(response.getEntity().getContent()));
+            InputStreamReader stream = new InputStreamReader(response.getEntity().getContent());
+            rd = new BufferedReader(stream);
 
             StringBuilder result = new StringBuilder();
             String line = "";
@@ -59,6 +59,7 @@ public class RestClient implements IRestClient {
                 result.append(line);
             }
             rd.close();
+            stream.close();
             System.out.println("Json: " + result.toString());
             return gson.fromJson(result.toString(), Boolean.class);
 

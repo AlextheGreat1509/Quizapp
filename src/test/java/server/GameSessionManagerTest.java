@@ -5,12 +5,8 @@ import org.junit.experimental.theories.DataPoints;
 
 public class GameSessionManagerTest {
     @DataPoints
-    public GameSession GetGameSession(){
-        GameSession game = new GameSession(1);
+    public GameSessionManager GetGameSession(){
+        GameSessionManager game = GameSessionManager.getInstance();
         return game;
-    }
-
-    @Test
-    public void getRandomQuestionTest() {
     }
 }
