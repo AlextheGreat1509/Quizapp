@@ -1,7 +1,5 @@
 package models;
 
-import server.GameSession;
-
 import java.util.HashMap;
 import java.util.Map;
 

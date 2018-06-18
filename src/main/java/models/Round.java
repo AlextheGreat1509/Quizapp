@@ -1,7 +1,5 @@
 package models;
 
-import java.util.ArrayList;
-
 public class Round {
     private Question question;
     private RoundResult roundResult;

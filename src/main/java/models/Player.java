@@ -1,7 +1,5 @@
 package models;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;

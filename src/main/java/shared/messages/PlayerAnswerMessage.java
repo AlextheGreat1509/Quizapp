@@ -1,7 +1,6 @@
 package shared.messages;
 
 import models.Answer;
-import models.Player;
 
 public class PlayerAnswerMessage extends BaseMessage{
     private Answer answer;

@@ -1,8 +1,6 @@
 package client.messagehandlers;
 
 import client.IUILogic;
-import models.Question;
-import models.RoundResult;
 import shared.messages.RoundResultMessage;
 
 public class RoundResultMessageHandler extends BaseMessageHandler {

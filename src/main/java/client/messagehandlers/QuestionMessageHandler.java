@@ -1,7 +1,6 @@
 package client.messagehandlers;
 
 import client.IUILogic;
-import models.Question;
 import shared.messages.QuestionMessage;
 
 public class QuestionMessageHandler extends BaseMessageHandler {

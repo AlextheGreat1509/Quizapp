@@ -1,14 +1,13 @@
 package server;
 
-import javax.websocket.server.ServerContainer;
-
-import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 import org.glassfish.jersey.servlet.ServletContainer;
 import server.restserver.QuizApiServices;
+
+import javax.websocket.server.ServerContainer;
 
 public class QuizServer
 {

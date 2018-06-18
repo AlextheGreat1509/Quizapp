@@ -1,8 +1,9 @@
 package client;
 
+import javax.websocket.ContainerProvider;
+import javax.websocket.Session;
+import javax.websocket.WebSocketContainer;
 import java.net.URI;
-
-import javax.websocket.*;
 
 public class WebSocketClient implements IWebSocketClient{
     private URI uri = URI.create("ws://localhost:8090/quizapp/");

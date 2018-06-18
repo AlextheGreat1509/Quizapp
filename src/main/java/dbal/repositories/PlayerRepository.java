@@ -1,9 +1,7 @@
 package dbal.repositories;
 
 import dbal.context.IPlayerContext;
-import dbal.context.IQuestionContext;
 import models.Player;
-import models.Question;
 
 public class PlayerRepository {
     private final IPlayerContext playerContext;

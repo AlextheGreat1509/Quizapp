@@ -1,7 +1,5 @@
 package server.messagehandlers;
 
-import models.PlayerAnswer;
-import server.GameSession;
 import server.IGameSession;
 import shared.messages.PlayerReadyMessage;
 

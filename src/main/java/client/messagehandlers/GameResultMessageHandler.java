@@ -2,7 +2,6 @@ package client.messagehandlers;
 
 import client.IUILogic;
 import shared.messages.GameResultMessage;
-import shared.messages.RoundResultMessage;
 
 public class GameResultMessageHandler extends BaseMessageHandler {
 

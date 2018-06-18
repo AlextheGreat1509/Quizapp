@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class GameSessionManager {
+public final class GameSessionManager implements IGameSessionManager{
     private ArrayList<Session> sessionsList = new ArrayList<>();
     private Map<String, IGameSession> gameSessionsMap = new HashMap<>();
     private IGameSession gameSession;
@@ -17,7 +17,7 @@ public final class GameSessionManager {
         matchSessions();
     }
 
-    public void matchSessions(){
+    private void matchSessions(){
         if (sessionsList.size() == 1){
             gameSession = new GameSession(2);
             gameSession.addSession(sessionsList.get(0));

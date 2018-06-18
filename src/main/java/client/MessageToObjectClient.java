@@ -4,8 +4,6 @@ import client.messagehandlers.GameResultMessageHandler;
 import client.messagehandlers.QuestionMessageHandler;
 import client.messagehandlers.RoundResultMessageHandler;
 import com.google.gson.Gson;
-import models.Question;
-import models.RoundResult;
 import shared.messages.GameResultMessage;
 import shared.messages.QuestionMessage;
 import shared.messages.RoundResultMessage;

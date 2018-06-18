@@ -1,8 +1,6 @@
 package server;
 
 import com.google.gson.Gson;
-import models.Answer;
-import models.PlayerAnswer;
 import server.messagehandlers.PlayerAnswerMessageHandler;
 import server.messagehandlers.PlayerReadyMessageHandler;
 import shared.messages.PlayerAnswerMessage;
@@ -11,7 +9,7 @@ import shared.messages.PlayerReadyMessage;
 public class MessageToObjectServer {
     Gson gson = new Gson();
 
-    public void processMessage(String sessionId, String type, String data, GameSessionManager gameSessionManager) {
+    public void processMessage(String sessionId, String type, String data, IGameSessionManager gameSessionManager) {
         //Get the last part from the full package and type name
         String simpleType = type.split("\\.")[type.split("\\.").length - 1];
         IGameSession game = gameSessionManager.getGameSessionBySession(sessionId);

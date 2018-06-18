@@ -5,13 +5,7 @@ import shared.EncapsulatingMessageGenerator;
 import shared.IEncapsulatingMessageGenerator;
 import shared.messages.EncapsulatingMessage;
 
-import javax.websocket.ClientEndpoint;
-import javax.websocket.CloseReason;
-import javax.websocket.OnClose;
-import javax.websocket.OnError;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
+import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +15,7 @@ import java.util.ArrayList;
 public class WebSocket implements IWebSocket{
     private static ArrayList<Session> sessions = new ArrayList<>();
     private Gson gson = new Gson();
-    private GameSessionManager gameSessionManager;
+    private IGameSessionManager gameSessionManager;
     private MessageToObjectServer messageToObjectServer;
     private IEncapsulatingMessageGenerator messageGenerator;
 

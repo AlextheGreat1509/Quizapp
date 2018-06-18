@@ -11,7 +11,6 @@ import shared.messages.PlayerReadyMessage;
 
 import java.util.ArrayList;
 import java.util.Observer;
-import java.util.Set;
 
 public final class UILogic implements IUILogic, Observer{
     private IWebSocketClient client;
@@ -19,7 +18,6 @@ public final class UILogic implements IUILogic, Observer{
     private IEncapsulatingMessageGenerator messageGenerator;
     boolean useServer = true;
     private Question question;
-    PlayerFound playerFound = new PlayerFound();
     private IQuestionFX questionFX;
 
     private static final UILogic INSTANCE = new UILogic();
@@ -59,11 +57,6 @@ public final class UILogic implements IUILogic, Observer{
     public void Connect(String username, String password){
         Player player = new Player(username,password);
         client.SendMessage(messageGenerator.generateMessageString(new PlayerReadyMessage(player)));
-    }
-
-    public boolean PlayerFound(){
-        playerFound.addObserver(this);
-        return playerFound.isPlayerFound();
     }
 
     public void setRoundResult(RoundResult roundResult){
