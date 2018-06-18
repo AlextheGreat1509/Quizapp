@@ -19,7 +19,6 @@ public class MessageToObjectClient {
         switch(simpleType)
         {
             case "QuestionMessage":
-                System.out.println("question model");
                 QuestionMessageHandler questionMessageHandler = new QuestionMessageHandler(logic);
                 questionMessageHandler.HandleQuestion(gson.fromJson(data, QuestionMessage.class));
                 break;
@@ -28,9 +27,9 @@ public class MessageToObjectClient {
                 gameResultMessageHandler.HandleGameResult(gson.fromJson(data, GameResultMessage.class));
                 break;
             case "RoundResultMessage":
-                System.out.println("Roundresult received");
                 RoundResultMessageHandler roundResultMessageHandler = new RoundResultMessageHandler(logic);
                 roundResultMessageHandler.HandleRoundResult(gson.fromJson(data, RoundResultMessage.class));
+                break;
             default:
         }
     }

@@ -14,7 +14,6 @@ import java.util.Observer;
 
 public final class UILogic implements IUILogic, Observer{
     private IWebSocketClient client;
-    private Gson gson = new Gson();
     private IEncapsulatingMessageGenerator messageGenerator;
     boolean useServer = true;
     private Question question;
