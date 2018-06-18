@@ -103,6 +103,7 @@ public class GameSession implements IGameSession {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
         allRounds.add(round);
         if (checkGameEnd(2)){

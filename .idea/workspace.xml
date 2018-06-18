@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38ddf5bc-bfd6-4903-9d60-2e525749f12e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java" afterPath="$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/server/GameSessionManagerTest.java" afterPath="$PROJECT_DIR$/src/test/java/server/GameSessionManagerTest.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/GameSession.java" afterPath="$PROJECT_DIR$/src/main/java/server/GameSession.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -19,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="GameSession.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameSession.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/server/GameSession.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="75" column="60" lean-forward="false" selection-start-line="75" selection-start-column="16" selection-end-line="75" selection-end-column="60" />
+            <state relative-caret-position="210">
+              <caret line="102" column="31" lean-forward="true" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -101,11 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RestClient.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RestClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="296">
-              <caret line="61" column="27" lean-forward="true" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
+              <caret line="61" column="27" lean-forward="false" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -167,7 +167,6 @@
         <option value="$PROJECT_DIR$/src/main/java/shared/messages/QuestionMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/shared/messages/GameResultMessage.java" />
         <option value="$PROJECT_DIR$/src/test/java/shared/EncapsulatingMessageGeneratorTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/server/GameSession.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/MessageToObjectServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/messagehandlers/BaseMessageHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/server/IGameSession.java" />
@@ -198,6 +197,7 @@
         <option value="$PROJECT_DIR$/src/main/java/server/GameSessionManager.java" />
         <option value="$PROJECT_DIR$/src/test/java/server/GameSessionManagerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/server/GameSession.java" />
       </list>
     </option>
   </component>
@@ -652,7 +652,7 @@
       <workItem from="1529171668157" duration="2746000" />
       <workItem from="1529220704721" duration="749000" />
       <workItem from="1529235729814" duration="5539000" />
-      <workItem from="1529308405289" duration="27116000" />
+      <workItem from="1529308405289" duration="27408000" />
     </task>
     <servers />
   </component>
@@ -689,7 +689,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141381000" />
+    <option name="totallyTimeSpent" value="141673000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1155,14 +1155,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/GameSession.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="75" column="60" lean-forward="false" selection-start-line="75" selection-start-column="16" selection-end-line="75" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/server/GameSessionTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -1190,7 +1182,15 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/client/authentication/RestClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
-          <caret line="61" column="27" lean-forward="true" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
+          <caret line="61" column="27" lean-forward="false" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/server/GameSession.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="102" column="31" lean-forward="true" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
           <folding />
         </state>
       </provider>
